@@ -1,0 +1,6 @@
+@CrewControl.NetCoreApi_HostAddress = http://localhost:5003
+
+GET {{CrewControl.NetCoreApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
