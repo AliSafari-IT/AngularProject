@@ -1,6 +1,7 @@
 ﻿using CrewControl.NetCoreApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrewControl.NetCoreApi.Controller
 {
@@ -72,18 +73,12 @@ namespace CrewControl.NetCoreApi.Controller
             return Ok(employees);
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var createdEmployee = await _employeeService.AddEmployeeAsync(employee);
-        //    return CreatedAtAction("GetEmployee", new { id = createdEmployee.EmployeeId }, createdEmployee);
-        //}
-
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
+        {
+            var employees = await _employeeService.GetAllEmployeesAsync();
+            return Ok(employees);
+        }
 
     }
 }
