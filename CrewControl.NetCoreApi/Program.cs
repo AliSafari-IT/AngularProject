@@ -16,6 +16,17 @@ builder.Services.AddDbContext<CDbContext>(options =>
                 errorNumbersToAdd: null); // SQL error numbers to consider as transient
         }));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
