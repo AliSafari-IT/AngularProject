@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CrewControl.NetCoreApi.CrewDbContext;
+using CrewControl.NetCoreApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddDbContext<CDbContext>(options =>
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<EmployeeService>();
 // Add MVC Controller services
 builder.Services.AddControllers(); // This line is added
 
