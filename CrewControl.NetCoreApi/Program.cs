@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CrewControl.NetCoreApi.CrewDbContext;
+using CrewControl.NetCoreApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +16,22 @@ builder.Services.AddDbContext<CDbContext>(options =>
                 errorNumbersToAdd: null); // SQL error numbers to consider as transient
         }));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<EmployeeService>();
 // Add MVC Controller services
 builder.Services.AddControllers(); // This line is added
 
