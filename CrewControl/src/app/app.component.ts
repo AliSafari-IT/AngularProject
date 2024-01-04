@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { EmployeesListComponent } from './employees-list/employees-list.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', 
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [ CommonModule, EmployeesListComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
