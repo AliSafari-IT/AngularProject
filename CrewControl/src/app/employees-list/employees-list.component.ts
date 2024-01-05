@@ -4,10 +4,8 @@ import { NgFor, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'person-employee-lists',
-  standalone: true,
   templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.css'],
-  imports: [ NgFor, NgForOf]
+  styleUrls: ['./employees-list.component.css']
 })
 export class EmployeesListComponent implements OnInit {
   public persons: Person[] = [

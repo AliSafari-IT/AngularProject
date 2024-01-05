@@ -2,8 +2,7 @@ export interface Employee {
   employeeId: number;
   personId: number;
   department: string;
-  dateOfJoining: Date;
-  // Include navigation properties if needed
+  dateOfJoining:  Date | string;
   person?: Person;
 }
 
@@ -18,5 +17,5 @@ export interface Person {
   country: string;
   email: string;
   phoneNumber: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date | string;
 }

@@ -1,3 +1,56 @@
+<!-- CrewControl\src\app\employees-list\employees-list.component.html -->
+<!-- Person rows -->
+<h1 class="table-title">People
+
+</h1>
+<!-- Add new person button -->
+<br>
+<nav>
+    <ul>
+        <li>
+            <a routerLink="add-person">Add new person</a>
+        </li>
+    </ul>
+</nav>
+<table class="main-table">
+    <thead class="table-header">
+        <tr class="header-row">
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <!-- Add other headers as needed -->
+        </tr>
+    </thead>
+    <tbody class="table-body">
+        <tr *ngFor="let person of persons" class="data-row">
+            <td>{{ person.id }}</td>
+            <td>{{ person.firstName }}</td>
+            <td>{{ person?.lastName }}</td>
+        </tr>
+    </tbody>
+</table>
+<!-- Employee rows -->
+<h1 class="table-title">Employees</h1>
+<table class="main-table">
+    <thead class="table-header">
+        <tr class="header-row">
+            <th>#</th>
+            <th>Id</th>
+            <th>Department</th>
+            <th>Date of Joining</th>
+            <!-- Add other headers as needed -->
+        </tr>
+    </thead>
+    <tbody class="table-body">
+        <tr *ngFor="let item of employees; let i = index;" class="data-row">
+            <td>{{i + 1}}</td>
+            <td>{{item.employeeId}}</td>
+            <td>{{item.department}}</td>
+        </tr>
+    </tbody>
+</table>
+
 <style>
     .table-title {
         text-align: center;
@@ -37,46 +90,3 @@
         background-color: #ddd;
     }
 </style>
-
-
-<h1 class="table-title">People</h1>
-<table class="main-table">
-    <thead class="table-header">
-        <tr class="header-row">
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Date of Birth</th>
-            <!-- Add other headers as needed -->
-        </tr>
-    </thead>
-    <tbody class="table-body">
-        <tr *ngFor="let person of persons" class="data-row">
-            <td>{{ person.id }}</td>
-            <td>{{ person.firstName }}</td>
-            <td>{{ person.lastName }}</td>
-            <td>{{ (person.dateOfBirth).toDateString() }}</td>
-        </tr>
-    </tbody>
-</table>
-<!-- Employee rows -->
-<h1 class="table-title">Employees</h1>
-<table class="main-table">
-    <thead class="table-header">
-        <tr class="header-row">
-            <th>#</th>
-            <th>Id</th>
-            <th>Department</th>
-            <th>Date of Joining</th>
-            <!-- Add other headers as needed -->
-        </tr>
-    </thead>
-    <tbody class="table-body">
-        <tr *ngFor="let item of employees; let i = index;" class="data-row">
-            <td>{{i + 1}}</td>
-            <td>{{item.employeeId}}</td>
-            <td>{{item.department}}</td>
-            <td>{{(item.dateOfJoining).toDateString()}}</td>
-        </tr>
-    </tbody>
-</table>
