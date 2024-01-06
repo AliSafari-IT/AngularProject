@@ -1,22 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
-import { EmployeesListComponent } from './employees-list/employees-list.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
-import { HomeComponent } from './home/home.component';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root', 
   standalone: true,
-  imports: [ CommonModule, 
-    AddEmployeeComponent, 
-    EditEmployeeComponent,
-    EmployeesListComponent,
-    Router,
-    HomeComponent,
-    Event,
-    RouterOutlet],
+  imports: [RouterModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
