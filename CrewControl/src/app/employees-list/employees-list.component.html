@@ -8,19 +8,21 @@
                         <th>ID</th>
                         <th>Department</th>
                         <!-- Add other headers as needed -->
+                        <th>Selected</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employees">
-                        <td>{{ employee.employeeId }}</td>
-                        <td>{{ employee.department}}</td>
+                    <tr *ngFor="let emp of employees">
+                        <td>{{ emp.employeeId }}</td>
+                        <td>{{ emp.department}}</td>
                         <!-- Add other data fields as needed -->
+                        <td><input type="checkbox" [(ngModel)]="emp.isSelected"></td> 
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
+<app-employee-person-list></app-employee-person-list>
 
 

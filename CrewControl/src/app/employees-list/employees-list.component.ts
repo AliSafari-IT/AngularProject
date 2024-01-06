@@ -1,15 +1,17 @@
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 import { EmployeeService } from '../Services/employee.service';
 import { Employee } from '../models/Employee';
+import { EmployeePersonListComponent } from '../employee-person-list/employee-person-list.component';
 
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss'],
   standalone: true,
-  imports: [CommonModule],
-
+  imports: [CommonModule, EmployeePersonListComponent, FormsModule],  
+  providers: []
 })
 export class EmployeesListComponent implements OnInit {
   employees: Employee[] = [];
