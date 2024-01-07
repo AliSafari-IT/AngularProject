@@ -1,0 +1,7 @@
+<table class="employee-table">
+    <caption class="caption-employee">Employees List</caption>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee?.employeeId }}</td>
+      <td>{{ employee?.department }}</td>
+    </tr>
+  </table>
