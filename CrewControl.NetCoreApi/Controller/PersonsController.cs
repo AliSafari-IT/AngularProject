@@ -25,6 +25,19 @@ namespace CrewControl.NetCoreApi.Controllers
             return await _context.Persons.ToListAsync();
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Person>> GetPerson(int id)
+        {
+            var person = await _context.Persons.FindAsync(id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return person;
+        }
+
+
         // POST: api/Persons
         [HttpPost]
         public async Task<ActionResult<Person>> PostPerson(Person person)
