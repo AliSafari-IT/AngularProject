@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <h1>Employees List</h1>
             <table class="table">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Department</th>
@@ -11,12 +11,12 @@
                         <th>Selected</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let emp of employees">
-                        <td>{{ emp.employeeId }}</td>
-                        <td>{{ emp.department}}</td>
+                <tbody >
+                    <tr *ngFor="let emp of employees" class="employee-row">
+                        <td class="employee-id">{{ emp.employeeId }}</td>
+                        <td class="employee-department">{{ emp.department}}</td>
                         <!-- Add other data fields as needed -->
-                        <td><input type="checkbox" [(ngModel)]="emp.isSelected"></td> 
+                        <td class="employee-selected"><input type="checkbox" [(ngModel)]="emp.isSelected"></td> 
                     </tr>
                 </tbody>
             </table>

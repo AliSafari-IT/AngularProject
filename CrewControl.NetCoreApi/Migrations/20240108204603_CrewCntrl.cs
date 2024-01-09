@@ -11,26 +11,29 @@ namespace CrewControl.NetCoreApi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DateOfJoining",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "Department",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "EmployeeId",
-                table: "Persons");
-
-            migrationBuilder.RenameColumn(
-                name: "PersonId",
-                table: "Persons",
-                newName: "Id");
+            migrationBuilder.CreateTable(
+                name: "Persons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaritalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Persons", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Employees",
@@ -56,8 +59,7 @@ namespace CrewControl.NetCoreApi.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_PersonId",
                 table: "Employees",
-                column: "PersonId",
-                unique: true);
+                column: "PersonId");
         }
 
         /// <inheritdoc />
@@ -66,36 +68,8 @@ namespace CrewControl.NetCoreApi.Migrations
             migrationBuilder.DropTable(
                 name: "Employees");
 
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "Persons",
-                newName: "PersonId");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DateOfJoining",
-                table: "Persons",
-                type: "datetime2",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Department",
-                table: "Persons",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Discriminator",
-                table: "Persons",
-                type: "nvarchar(8)",
-                maxLength: 8,
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<int>(
-                name: "EmployeeId",
-                table: "Persons",
-                type: "int",
-                nullable: true);
+            migrationBuilder.DropTable(
+                name: "Persons");
         }
     }
 }
