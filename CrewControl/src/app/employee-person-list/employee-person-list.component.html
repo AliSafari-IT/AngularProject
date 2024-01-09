@@ -1,10 +1,10 @@
 <h1>When a radio button is selected</h1>
 <div class="employee-list">
     <h3>Employee-Person List</h3>
-    <div>
+    <div >
         <button class="btn btn-primary" (click)="toggleShowAddEmployeeForm()">Add Employee</button>
-        <div class="add-employee-form" *ngIf="showAddEmployeeForm">
-            <app-add-employee-form></app-add-employee-form>
+        <div class="add-employee-form-container modal" *ngIf="showAddEmployeeForm">
+            <app-add-employee-form (closeForm)="toggleShowAddEmployeeForm()"></app-add-employee-form>
         </div>
     </div>
     <table class="table table-bordered employee-table table-hover">

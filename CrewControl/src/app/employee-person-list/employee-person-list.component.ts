@@ -1,9 +1,8 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/Employee';
 import { Person } from '../models/Person';
 import { EmployeeService } from '../Services/employee.service';
 import { NgFor, NgIf } from '@angular/common';
-import { NgModel } from '@angular/forms';
 import { AddEmployeeFormComponent } from "../add-employee-form/add-employee-form.component";
 @Component({
     selector: 'app-employee-person-list',
