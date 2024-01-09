@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { Person } from '../models/Person';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +41,14 @@ export class EmployeeService {
     const url = `${this.personsUrl}/${personId}`;
     return this.http.get<any>(url);
   }
+
+  addEmployee(employee: FormGroup): Observable<Employee> {
+    const params = new HttpParams()
+      .set('personId', employee.value.personId)
+      .set('department', employee.value.department)
+      .set('dateOfJoining', employee.value.dateOfJoining);
+  
+    return this.http.post<Employee>(this.employeesUrl, null, { params });
+  }
+
 }
