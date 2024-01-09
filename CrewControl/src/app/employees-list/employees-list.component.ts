@@ -45,14 +45,22 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   }
 
   deleteEmployees() {
-    // if no employees are selected, alert user to select at least one employee to delete
     if (!this.employees.some(employee => employee.isSelected)) {
       alert('Please select at least one employee to delete.');
       return;
     }
-    // Delete selected employees (employee.isSelected === true) when delete button is clicked
-    this.employees = this.employees.filter(employee => !employee.isSelected);
+  
+    if (confirm('Are you sure you want to delete the selected employees?')) {
+      const deletedEmployeesDetails = this.employees
+        .filter(employee => employee.isSelected)
+        .map(employee => `Id: ${employee.employeeId}, Department: ${employee.department}`);
+  
+      this.infoMessage = `Deleted ${deletedEmployeesDetails.length} employee(s):\n${deletedEmployeesDetails.join('\n')}`;
+  
+      this.employees = this.employees.filter(employee => !employee.isSelected);
+    }
   }
+  
 
   unselectEmployees() {
     // Unselect all employees when unselect button is clicked
