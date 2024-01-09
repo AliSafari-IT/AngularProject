@@ -124,11 +124,27 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   searchEmployees() {
     if (this.searchInput) {
       const searchInputLowerCase = this.searchInput.toLowerCase();
-      this.employees = this.allEmployees.filter(employee =>
-        employee.department.toLowerCase().includes(searchInputLowerCase)
-      );
+      this.employees = this.allEmployees.filter(employee => {
+        // Convert employeeId to string and check if it includes the search input
+        const idMatch = employee.employeeId.toString().includes(this.searchInput);
+    
+        // Check if department (converted to lowercase) includes the search input
+        const departmentMatch = employee.department?.toLowerCase().includes(searchInputLowerCase);
+  
+        // Return true if either idMatch or departmentMatch is true
+        return idMatch || departmentMatch;
+      });
+  
+      // Update infoMessage based on the number of filtered employees
+      if (this.employees.length > 0) {
+        this.infoMessage = `Found ${this.employees.length} employees.`;
+      } else {
+        this.infoMessage = 'No employees found.';
+      }
     } else {
       this.employees = [...this.allEmployees];
+      this.infoMessage = null; // Reset the info message when there's no search input
     }
   }
+  
 }
