@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { Person } from '../models/Person';
 import { FormGroup } from '@angular/forms';
@@ -9,6 +9,8 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class EmployeeService {
+  private employeeUpdateSource = new Subject<void>();
+  employeeUpdate$ = this.employeeUpdateSource.asObservable();
 
   private employeesUrl = 'https://localhost:44354/api/Employees';
   private personsUrl = 'https://localhost:44354/api/Persons';
@@ -51,4 +53,10 @@ export class EmployeeService {
     return this.http.post<Employee>(this.employeesUrl, null, { params });
   }
 
+  notifyEmployeeUpdate() {
+    this.employeeUpdateSource.next();
+    console.log("notifyEmployeeUpdate called!");
+    
+  }
+  
 }
