@@ -5,11 +5,11 @@ import { EmployeeService } from '../Services/employee.service';
 import { NgFor, NgIf } from '@angular/common';
 import { AddEmployeeFormComponent } from "../add-employee-form/add-employee-form.component";
 @Component({
-    selector: 'app-employee-person-list',
-    templateUrl: './employee-person-list.component.html',
-    styleUrls: ['./employee-person-list.component.css'],
-    standalone: true,
-    imports: [NgFor, NgIf, AddEmployeeFormComponent]
+  selector: 'app-employee-person-list',
+  templateUrl: './employee-person-list.component.html',
+  styleUrls: ['./employee-person-list.component.css'],
+  standalone: true,
+  imports: [NgFor, NgIf, AddEmployeeFormComponent]
 })
 export class EmployeePersonListComponent implements OnInit {
 
@@ -22,6 +22,7 @@ export class EmployeePersonListComponent implements OnInit {
   now: number = Date.now();
   dateOfJoining: Date = new Date(this.now);
   showAddEmployeeForm: boolean = false;
+  closeForm: any;
   constructor(
     private employeeService: EmployeeService,
     //private personService: PersonService
@@ -30,6 +31,10 @@ export class EmployeePersonListComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployees();
     this.loadPeople();
+    this.employeeService.employeeUpdate$.subscribe(() => {
+      this.loadEmployees();
+      this.loadPeople();
+    });
   }
 
   // Create (Add) an Employee
@@ -37,10 +42,10 @@ export class EmployeePersonListComponent implements OnInit {
     // Add the employee to the employees array
     this.employees.push({} as Employee);
   }
-  
+
   toggleShowAddEmployeeForm() {
     this.showAddEmployeeForm = !this.showAddEmployeeForm;
-    }
+  }
 
   // If person employed add its Employee object to its related person object then add it to people array
   addPersonToEmployee(employee: Employee): void {
@@ -95,5 +100,9 @@ export class EmployeePersonListComponent implements OnInit {
 
   trackById(index: number, employee: Employee): number {
     return employee.employeeId;
+  }
+
+  refreshTableData(): void {
+    this.employeeService.notifyEmployeeUpdate();
   }
 }
