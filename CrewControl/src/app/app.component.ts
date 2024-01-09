@@ -9,14 +9,20 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet, HttpClientModule,PeopleComponent, EmployeesListComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HttpClientModule,
+    PeopleComponent,
+    EmployeesListComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [EmployeeService],
 })
 export class AppComponent implements OnInit {
   employees: any = [];
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) { }
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
