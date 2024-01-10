@@ -122,3 +122,24 @@
   align-items: center;
 }
 
+/* Styles for the search bar */
+
+.search-bar {
+  margin-top: 2px;
+  margin-bottom: 1px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 500;   
+}
+
+#search-input{
+  border-radius: 3px;
+  padding: 5px 15px;
+  border: 1px solid #44c209;
+}
+
+label[for="search-input"]{
+  margin-left: 10px;
+}

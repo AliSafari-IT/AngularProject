@@ -20,8 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [EmployeeService],
+  providers: [EmployeeService,],
 })
+
 export class AppComponent implements OnInit {
   employees: any = [];
   constructor(private employeeService: EmployeeService) { }

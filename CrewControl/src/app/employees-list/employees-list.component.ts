@@ -1,21 +1,23 @@
-import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../Services/employee.service';
 import { Employee } from '../models/Employee';
 import { EmployeePersonListComponent } from '../employee-person-list/employee-person-list.component';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../controls/alert-dialog/alert-dialog.component';
+import { AppModule } from '../app.module';
+import { NotificationsComponent } from "../notifications/notifications.component";
 
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, EmployeePersonListComponent, FormsModule,
-  ],
-  providers: []
+  providers: [],
+  schemas: [],
+  imports: [CommonModule, EmployeePersonListComponent, FormsModule, AppModule,NotificationsComponent]
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
 
@@ -27,6 +29,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   successMessage: any;
   errorMessage: any;
   warningMessage: any;
+  infoMessageHtml: any;
   infoMessage: any;
   searchInput: any;
 
@@ -37,9 +40,9 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.getEmployees();
     }, 200);
-    
+
   }
-  
+
   editEmployees() {
     // if no employees are selected, alert user to select at least one employee to edit
     if (!this.employees.some(employee => employee.isSelected)) {
@@ -67,7 +70,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     }
 
     if (confirm('Are you sure you want to delete the selected employees?')) {
-      const deletedEmployeesIds = this.employees.filter(employee => employee.isSelected).map(employee => employee.employeeId); 
+      const deletedEmployeesIds = this.employees.filter(employee => employee.isSelected).map(employee => employee.employeeId);
       const deletedEmployeesDetails = this.employees
         .filter(employee => employee.isSelected)
         .map(employee => `Id: ${employee.employeeId}, Department: ${employee.department}`);
@@ -77,7 +80,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       this.employees = this.employees.filter(employee => !employee.isSelected);
       // Save the updated list of employees and alert the user if failed to save
       deletedEmployeesIds?.forEach(id => {
-        this.employeeService.deleteEmployeeById(id).subscribe( () => {
+        this.employeeService.deleteEmployeeById(id).subscribe(() => {
           console.log(`Deleted employee with id: ${id}`);
           this.getEmployees();
         });
@@ -90,6 +93,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     // Unselect all employees when unselect button is clicked
     this.employees = this.employees.map(employee => ({ ...employee, isSelected: false }));
     this.infoMessage = null;
+    this.infoMessageHtml = null;
     this.lastSelectedEmployee = null;
     this.successMessage = null;
     this.warningMessage = null;

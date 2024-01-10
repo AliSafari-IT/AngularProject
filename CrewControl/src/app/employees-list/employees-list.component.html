@@ -14,15 +14,13 @@
                         id="edit-button-selected-employee">Edit</button>
                     <button class="btn btn-unselect" (click)="unselectEmployees()">Unselect All</button>
                 </div>
-                <div class="crud-notifications" *ngIf="successMessage || warningMessage || errorMessage || infoMessage">
-                    <!-- Add success, warning, info and error messages here -->
-                    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-                    <div *ngIf="warningMessage" class="alert alert-warning">{{ warningMessage }}</div>
-                    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-                    <div *ngIf="infoMessage" class="alert alert-info">
-                        <pre>{{ infoMessage }}</pre>
-                    </div>
-                </div>
+                <app-notifications
+                [successMessage]="successMessage"
+                [warningMessage]="warningMessage"
+                [errorMessage]="errorMessage"
+                [infoMessageHtml]="infoMessageHtml"
+                [infoMessage]="infoMessage"
+              ></app-notifications>
                 <div class="search-bar">
                     <!-- Add search bar here -->
                     <input type="text" [(ngModel)]="searchInput" placeholder="Search" id="search-input"

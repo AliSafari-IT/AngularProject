@@ -4,8 +4,18 @@
     <div class="crud-toolbar">
         <button class="btn btn-primary" (click)="toggleShowAddEmployeeForm()">Add Employee</button>
         <div class="spacer"></div>
+        <app-notifications [successMessage]="successMessage" [warningMessage]="warningMessage"
+            [errorMessage]="errorMessage" [infoMessageHtml]="infoMessageHtml"
+            [infoMessage]="infoMessage"></app-notifications>
+        <div class="search-bar">
+            <!-- Add search bar here -->
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search" id="search-input" class="search-input"
+                (ngModelChange)="searchEmployees()">
+            <label for="search-input"> <i class="fa fa-search" aria-hidden="true"></i>
+            </label>
+        </div>
         <div class="add-employee-form-container modal" *ngIf="showAddEmployeeForm">
-            <app-add-employee-form (closeForm)="toggleShowAddEmployeeForm()"  (submissionSuccess)="refreshTableData()">
+            <app-add-employee-form (closeForm)="toggleShowAddEmployeeForm()" (submissionSuccess)="refreshTableData()">
 
 
             </app-add-employee-form>
