@@ -51,6 +51,11 @@
     background-color: #f5f5f5;
   }
 
+  .employee-row {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+  }
+
   .add-employee-form-container {
     position: fixed;
     top: 0;

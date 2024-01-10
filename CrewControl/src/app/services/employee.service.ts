@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class EmployeeService {
+
   private employeeUpdateSource = new Subject<void>();
   employeeUpdate$ = this.employeeUpdateSource.asObservable();
 
@@ -51,6 +52,11 @@ export class EmployeeService {
       .set('dateOfJoining', employee.value.dateOfJoining);
   
     return this.http.post<Employee>(this.employeesUrl, null, { params });
+  }
+
+  deleteEmployeeById(employeeId: number) : Observable<any> {
+    const url = `${this.employeesUrl}/${employeeId}`;
+    return this.http.delete<any>(url);
   }
 
   notifyEmployeeUpdate() {

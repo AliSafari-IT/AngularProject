@@ -35,6 +35,7 @@ export class EmployeePersonListComponent implements OnInit {
       this.loadEmployees();
       this.loadPeople();
     });
+    
   }
 
   // Create (Add) an Employee
