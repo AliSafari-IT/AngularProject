@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { Person } from '../models/Person';
 import { FormGroup } from '@angular/forms';
@@ -9,6 +9,9 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class EmployeeService {
+
+  private employeeUpdateSource = new Subject<void>();
+  employeeUpdate$ = this.employeeUpdateSource.asObservable();
 
   private employeesUrl = 'https://localhost:44354/api/Employees';
   private personsUrl = 'https://localhost:44354/api/Persons';
@@ -47,8 +50,18 @@ export class EmployeeService {
       .set('personId', employee.value.personId)
       .set('department', employee.value.department)
       .set('dateOfJoining', employee.value.dateOfJoining);
-  
+
     return this.http.post<Employee>(this.employeesUrl, null, { params });
+  }
+
+  deleteEmployeeById(employeeId: number): Observable<any> {
+    const url = `${this.employeesUrl}/${employeeId}`;
+    return this.http.delete<any>(url);
+  }
+
+  notifyEmployeeUpdate() {
+    this.employeeUpdateSource.next();
+    console.log("notifyEmployeeUpdate called!");
   }
 
 }
