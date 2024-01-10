@@ -87,6 +87,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     } else {
       const selectedEmployee = this.employees.find(employee => employee.isSelected);
       if (!selectedEmployee) {
+      this.infoMessage = null;
         return;
       }
       this.infoMessage = `You have selected 1 employee: (${selectedEmployee?.employeeId} & ${selectedEmployee?.department}).`;
@@ -105,6 +106,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       editButton?.removeAttribute('hidden');
       this.warningMessage = '';
     }
+
     return;
   }
 
@@ -155,4 +157,15 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     }
   }
   
+  // set infoMessage to null when no employees are selected
+  setInfoMessageNull(): void {
+    this.infoMessage = null;
+  }  
+  
+  // set infoMessage to null when one selected employee is immediately unselected
+  setInfoMessageNullAfterUnselect(): void {
+    this.infoMessage = null;
+  }
+
+
 }
