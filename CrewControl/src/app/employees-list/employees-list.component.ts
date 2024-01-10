@@ -5,6 +5,8 @@ import { EmployeeService } from '../Services/employee.service';
 import { Employee } from '../models/Employee';
 import { EmployeePersonListComponent } from '../employee-person-list/employee-person-list.component';
 import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertDialogComponent } from '../controls/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-employees-list',
@@ -28,8 +30,16 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   infoMessage: any;
   searchInput: any;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private dialog: MatDialog) { }
 
+  refreshTableData() {
+    this.employees = [];
+    setTimeout(() => {
+      this.getEmployees();
+    }, 200);
+    
+  }
+  
   editEmployees() {
     // if no employees are selected, alert user to select at least one employee to edit
     if (!this.employees.some(employee => employee.isSelected)) {
@@ -46,21 +56,35 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
 
   deleteEmployees() {
     if (!this.employees.some(employee => employee.isSelected)) {
-      alert('Please select at least one employee to delete.');
+      this.dialog.open(AlertDialogComponent, {
+        data: {
+          title: 'Note',
+          message: 'Please select at least one employee to delete.',
+          type: 'warning'
+        }
+      });
       return;
     }
-  
+
     if (confirm('Are you sure you want to delete the selected employees?')) {
+      const deletedEmployeesIds = this.employees.filter(employee => employee.isSelected).map(employee => employee.employeeId); 
       const deletedEmployeesDetails = this.employees
         .filter(employee => employee.isSelected)
         .map(employee => `Id: ${employee.employeeId}, Department: ${employee.department}`);
-  
+
       this.infoMessage = `Deleted ${deletedEmployeesDetails.length} employee(s):\n${deletedEmployeesDetails.join('\n')}`;
-  
+
       this.employees = this.employees.filter(employee => !employee.isSelected);
+      // Save the updated list of employees and alert the user if failed to save
+      deletedEmployeesIds?.forEach(id => {
+        this.employeeService.deleteEmployeeById(id).subscribe( () => {
+          console.log(`Deleted employee with id: ${id}`);
+          this.getEmployees();
+        });
+      });
     }
   }
-  
+
 
   unselectEmployees() {
     // Unselect all employees when unselect button is clicked
@@ -87,7 +111,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     } else {
       const selectedEmployee = this.employees.find(employee => employee.isSelected);
       if (!selectedEmployee) {
-      this.infoMessage = null;
+        this.setInfoMessageNull();
         return;
       }
       this.infoMessage = `You have selected 1 employee: (${selectedEmployee?.employeeId} & ${selectedEmployee?.department}).`;
@@ -137,14 +161,14 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       this.employees = this.allEmployees.filter(employee => {
         // Convert employeeId to string and check if it includes the search input
         const idMatch = employee.employeeId.toString().includes(this.searchInput);
-    
+
         // Check if department (converted to lowercase) includes the search input
         const departmentMatch = employee.department?.toLowerCase().includes(searchInputLowerCase);
-  
+
         // Return true if either idMatch or departmentMatch is true
         return idMatch || departmentMatch;
       });
-  
+
       // Update infoMessage based on the number of filtered employees
       if (this.employees.length > 0) {
         this.infoMessage = `Found ${this.employees.length} employees.`;
@@ -153,19 +177,13 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       }
     } else {
       this.employees = [...this.allEmployees];
-      this.infoMessage = null; // Reset the info message when there's no search input
+      this.setInfoMessageNull();
+      ; // Reset the info message when there's no search input
     }
   }
-  
+
   // set infoMessage to null when no employees are selected
   setInfoMessageNull(): void {
     this.infoMessage = null;
-  }  
-  
-  // set infoMessage to null when one selected employee is immediately unselected
-  setInfoMessageNullAfterUnselect(): void {
-    this.infoMessage = null;
   }
-
-
 }

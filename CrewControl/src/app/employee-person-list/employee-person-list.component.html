@@ -33,7 +33,7 @@
             </tr>
         </thead>
         <tbody class="tbody-light">
-            <tr *ngFor="let employee of employees; trackBy: trackById" class="employee">
+            <tr *ngFor="let employee of employees; trackBy: trackById" class="employee employee-row">
                 <td><input type="radio" name="employee" (click)="addPersonToEmployee(employee)"></td>
                 <td>{{employee.employeeId}}</td>
                 <td>{{employee.department}}</td>
