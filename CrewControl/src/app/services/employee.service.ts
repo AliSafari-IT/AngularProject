@@ -59,6 +59,13 @@ export class EmployeeService {
     return this.http.delete<any>(url);
   }
 
+  updateEmployee(selectedEmployee: Employee) {
+    const url = `${this.employeesUrl}/${selectedEmployee.employeeId}`;
+    console.log("selectedEmployee in update:", {url, selectedEmployee});
+    
+    return this.http.put<Employee>(url, selectedEmployee);
+  }
+
   notifyEmployeeUpdate() {
     this.employeeUpdateSource.next();
     console.log("notifyEmployeeUpdate called!");
