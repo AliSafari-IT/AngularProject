@@ -7,7 +7,6 @@ import { EmployeePersonListComponent } from './components/employee-person-list/e
 import { HomeComponent } from './pages/home/home.component';
 import { ChangeLogComponent } from './pages/change-log/change-log.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
-import { AppRoutingModule } from './app.routes';
 import { HomePageComponent } from "./pages/home/home-page/home-page.component";
 import { ChangeLogContentComponent } from "./pages/change-log/change-log-content/change-log-content.component";
 import { Router, RouterOutlet } from '@angular/router';
@@ -38,7 +37,7 @@ export class AppComponent implements OnInit {
   navigateTo(path: string) {
     this.router.navigateByUrl(path);
   }
-  
+
   employees: any = [];
 
   ngOnInit(): void {
