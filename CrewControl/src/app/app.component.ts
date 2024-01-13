@@ -4,11 +4,7 @@ import { EmployeeService } from './Services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeePersonListComponent } from './components/employee-person-list/employee-person-list.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ChangeLogComponent } from './pages/change-log/change-log.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
-import { HomePageComponent } from "./pages/home/home-page/home-page.component";
-import { ChangeLogContentComponent } from "./pages/change-log/change-log-content/change-log-content.component";
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -23,10 +19,6 @@ import { Router, RouterOutlet } from '@angular/router';
     HttpClientModule,
     EmployeePersonListComponent,
     EmployeesListComponent,
-    HomeComponent,
-    ChangeLogComponent,
-    HomePageComponent,
-    ChangeLogContentComponent,
     RouterOutlet
   ]
 })
