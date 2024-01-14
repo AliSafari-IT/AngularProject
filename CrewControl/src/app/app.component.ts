@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { EmployeeService } from './Services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 import { EmployeePersonListComponent } from './components/employee-person-list/employee-person-list.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
-import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,12 @@
+<section class="example-btn-tgl">
+    <h4>Example for Button Toggle inside of a Reactive form</h4>
+    <mat-button-toggle-group [formControl]="fontStyleControl" aria-label="Font Style">
+      <mat-button-toggle value="bold">Bold</mat-button-toggle>
+      <mat-button-toggle value="italic">Italic</mat-button-toggle>
+      <mat-button-toggle value="underline">Underline</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="btn-tgl-value-container">
+        <p  class="btn-tgl-selected-value">Chosen value is: <span class="{{fontStyleControl.value}}">{{fontStyleControl.value}}</span></p>
+        <button mat-button class="btn-tgl-reset" (click)="fontStyleControl.reset()">Reset</button>
+    </div>
+  </section>
