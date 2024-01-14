@@ -1,0 +1,25 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header"> </div>
+
+        <mat-card-title class="example-card-title">Teamwork in Action at Crew Control</mat-card-title>
+        <mat-card-subtitle class="example-card-subtitle">Empowering Collaboration, Driving
+            Innovation</mat-card-subtitle>
+    </mat-card-header>
+    <div class="example-card-content">
+        <img mat-card-image src="../../../../assets/img/materialui/card1.png" alt="Photo" width="48%" min-width="300px">
+    </div>
+    <mat-card-content>
+        <p class="example-card-description">
+            Cards serve a wide variety of scenarios and may contain many different types of content. Due to this
+            flexible nature, the appropriate accessibility treatment depends on how you use &lt;mat-card&gt.
+        </p>
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-button (click)="liked()">LIKE</button>
+        <button mat-button (click)="shared()">SHARE</button>
+        <div class="example-spacer"></div>
+        <app-notifications [infoMessage]="infoMessage" [warningMessage]="warningMessage"></app-notifications>
+     </mat-card-actions>
+
+</mat-card>

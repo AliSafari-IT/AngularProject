@@ -1,17 +1,23 @@
 <!-- c:/VS/AngularProject/MyApp/my-angular-app/src/app/app.component.html -->
-<div class="pill pill-group ">
+<div>
 
     <a class="pill" href="/" (click)="navigateTo('/')">
         Full stack Application with Angular and DotNet Core Api
     </a>
-    <nav>
-        <a class="btn" routerLink="/home" href="/home" (click)="navigateTo('/home')" >Home</a>
-        |
-        <a class="btn" routerLink="/change-log" href="/change-log" (click)="navigateTo('/change-log')" >Recent Changes</a>
-        |
-        <a class="btn" routerLink="/about" href="/about" (click)="navigateTo('/about')" >About</a>
-        |
-        <a class="btn" routerLink="/employees-list" href="/employees-list" (click)="navigateTo('/employees-list')" >Employee List</a>
+    <nav class="top-menu ">
+        <div class="float-left"  align="start">
+           <button class="btn"   routerLink="/home" href="/home" (click)="navigateTo('/home')">Home</button>
+            <button class="btn"    routerLink="/change-log" href="/change-log" (click)="navigateTo('/change-log')">Recent
+                Changes</button>
+            <button class="btn"    routerLink="/about" href="/about" (click)="navigateTo('/about')">About</button>
+            <button class="btn"    routerLink="/employees-list" href="/employees-list"
+                (click)="navigateTo('/employees-list')">Employee List</button>
+
+            </div>
+            <div class="float-right"  align="end">
+            <button class="btn"   routerLink="/material/components" href="/material/components"
+                (click)="navigateTo('/material/components')">Material-UI</button>
+        </div>
     </nav>
 </div>
 <router-outlet></router-outlet>
