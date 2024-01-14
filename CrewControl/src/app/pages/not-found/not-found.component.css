@@ -1,0 +1,42 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    bottom:  300px;
+    text-align: center;
+
+  }
+
+  .not-found__title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #e65705;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #e6ae5a;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    text-underline-position: under;
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+    text-decoration-skip: none;
+    text-decoration-color: currentColor;
+  }
+
+  .not-found__text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #e65705;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-align: center;
+  }

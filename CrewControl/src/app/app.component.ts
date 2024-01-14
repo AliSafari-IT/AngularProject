@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 import { EmployeeService } from './Services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeePersonListComponent } from './components/employee-person-list/employee-person-list.component';
+import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { Router, RouterOutlet } from '@angular/router';
-import { AppModule } from './app.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [EmployeeService,AppModule],
+  providers: [EmployeeService,],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    EmployeePersonListComponent,
+    EmployeesListComponent,
     RouterOutlet
   ]
 })
