@@ -1,0 +1,15 @@
+.layout-sidebar {
+    width: 240px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    transition: transform 0.15s cubic-bezier(0.86, 0, 0.07, 1);
+    transform: translate3d(-180px, 0, 0);
+    box-shadow: 3px 0 5px 0 rgba(33, 35, 39, 0.15);
+    background-color: var(--surface-a);
+}
+
+.layout-sidebar.layout-sidebar-active {
+    transform: translate3d(0px, 0px, 0px);
+}
