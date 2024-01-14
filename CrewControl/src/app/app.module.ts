@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -10,7 +9,9 @@ import { MatCardModule } from '@angular/material/card';
     BrowserModule,
     FormsModule,
     HttpClientModule,     
-    MatCardModule,
+    MatCardModule,    
+  ],
+  declarations: [    
   ]
 })
 export class AppModule { }
