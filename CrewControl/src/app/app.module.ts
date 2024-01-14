@@ -7,13 +7,14 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    AppComponent
   ],
-  bootstrap: [AppComponent] // Bootstrapping the standalone AppComponent
+  bootstrap: [] 
 })
 export class AppModule { }

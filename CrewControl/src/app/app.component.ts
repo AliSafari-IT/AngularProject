@@ -5,13 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { EmployeesListComponent } from "./components/employees-list/employees-list.component";
+import { AppModule } from './app.module';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [EmployeeService],
+    providers: [EmployeeService, AppModule],
     imports: [
         CommonModule,
         ReactiveFormsModule,
