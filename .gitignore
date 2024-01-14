@@ -43,8 +43,5 @@ AngularCRUDApplication
 .vscode/extensions.json
 AngularCRUDApplication/angular.json
 AngularCRUDApplication/package-lock.json
-CrewControl
-EmployeeWebAPIApplication
-CrewControl/angular.json
-CrewControl/package.json
-CrewControl/src/index.html
+
+
