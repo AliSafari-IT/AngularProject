@@ -1,0 +1,72 @@
+<div class="employee-list">
+    <div class="crud-toolbar"> 
+        <button class="btn btn-primary" (click)="toggleShowAddEmployeeForm()">Add Employee</button>
+        <app-notifications [successMessage]="successMessage" [warningMessage]="warningMessage"
+            [errorMessage]="errorMessage" [infoMessageHtml]="infoMessageHtml"
+            [infoMessage]="infoMessage"></app-notifications>
+        <div class="search-bar">
+            <!-- Add search bar here -->
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search" id="search-input" class="search-input"
+                (ngModelChange)="searchEmployees()">
+            <label for="search-input"> <i class="fa fa-search" aria-hidden="true"></i>
+            </label>
+        </div>
+        <div class="add-employee-form-container modal" *ngIf="showAddEmployeeForm">
+            <app-addedit-employee-form (closeForm)="onCloseButtonClick()" (submissionSuccess)="refreshTableData()" [isEditMode]="false">
+            </app-addedit-employee-form>
+        </div>
+    </div>
+    <div class="page-title">
+        <h1 class="title text-primary">When a radio button is selected  <i class="fa fa-check-circle" aria-hidden="true"></i></h1>
+        <h3>See Employee-Person List <i class="fa fa-arrow-down" aria-hidden="true"></i></h3>
+    </div>
+    <table class="table table-bordered employee-table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th> Select </th>
+                <th>ID</th>
+                <th>Department</th>
+                <th>Person ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Joining</th>
+                <th>Gender</th>
+                <th>Marital Status</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody class="tbody-light">
+            <tr *ngFor="let employee of employees; trackBy: trackById" class="employee employee-row">
+                <td><input type="radio" name="employee" (click)="addPersonToEmployee(employee)"></td>
+                <td>{{employee.employeeId}}</td>
+                <td>{{employee.department}}</td>
+                <!-- Conditional Display for selectedPerson -->
+                <ng-container *ngIf="selectedPerson != null && employee.personId == selectedPerson.id">
+                    <td>{{selectedPerson.id}}</td>
+                    <td>{{selectedPerson.firstName}}</td>
+                    <td>{{selectedPerson.lastName}}</td>
+                    <td>{{employee.dateOfJoining}}</td>
+                    <td>{{selectedPerson.gender}}</td>
+                    <td>{{selectedPerson.maritalStatus}}</td>
+                    <td>{{selectedPerson.address}}</td>
+                    <td>{{selectedPerson.city}}</td>
+                    <td>{{selectedPerson.country}}</td>
+                    <td>{{selectedPerson.age}}</td>
+                    <td>{{selectedPerson.phone}}</td>
+                    <td>{{selectedPerson.email}}</td>
+                    <td>{{selectedPerson.dateOfBirth}}</td>
+                </ng-container>
+                <!-- Empty cells for unselected or unmatched employees -->
+                <ng-container *ngIf="!(selectedPerson != null && employee.personId == selectedPerson.id)">
+                    <td colspan="13"></td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>

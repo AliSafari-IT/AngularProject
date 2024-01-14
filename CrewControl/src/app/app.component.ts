@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { PeopleComponent } from './components/people/people.component';
-import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { EmployeeService } from './Services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
+import { AppModule } from './app.module';
+import { EmployeesListComponent } from "./components/employees-list/employees-list.component";
 
 @Component({
-  selector: 'app-root', 
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    ReactiveFormsModule,
-    HttpClientModule,
-    PeopleComponent,
-    EmployeesListComponent
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers: [EmployeeService,],
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [EmployeeService, AppModule],
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterOutlet,
+        EmployeesListComponent
+    ]
 })
 
 export class AppComponent implements OnInit {
