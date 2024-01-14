@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { EmployeePersonListComponent } from './components/employee-person-list/employee-person-list.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import { NavItem } from './interfaces/navItem';
 
 @Component({
   selector: 'app-root',
@@ -19,18 +22,33 @@ import { EmployeesListComponent } from './components/employees-list/employees-li
     HttpClientModule,
     EmployeePersonListComponent,
     EmployeesListComponent,
-    RouterOutlet
+    RouterOutlet,
+    MatButtonModule, MatMenuModule
+    
   ]
 })
 
 export class AppComponent implements OnInit {
+  employees: any = [];
+  navItems: NavItem[] = [
+    { title: 'Home', route: '/home', active: false },
+    { title: 'Recent Changes', route: '/change-log', active: false },
+    { title: 'About', route: '/about', active: false },
+    { title: 'Employee List', route: '/employees-list', active: false },
+    { title: 'Material-UI', route: '/material/components', active: false },
+  ];
+  
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
-  navigateTo(path: string) {
-    this.router.navigateByUrl(path);
+  toggleActive(item: any) {
+    this.navItems = this.navItems.map((x: any) => {
+      x.active = false;
+      return x;
+    });
+    item.active = true;
+    this.router.navigate([item.route]);
   }
 
-  employees: any = [];
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(data => {
