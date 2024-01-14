@@ -1,17 +1,3 @@
 <!-- c:/VS/AngularProject/MyApp/my-angular-app/src/app/app.component.html -->
-<div class="pill pill-group ">
-
-    <a class="pill" href="/" (click)="navigateTo('/')">
-        Full stack Application with Angular and DotNet Core Api
-    </a>
-    <nav>
-        <a class="btn" routerLink="/home" href="/home" (click)="navigateTo('/home')" >Home</a>
-        |
-        <a class="btn" routerLink="/change-log" href="/change-log" (click)="navigateTo('/change-log')" >Recent Changes</a>
-        |
-        <a class="btn" routerLink="/about" href="/about" (click)="navigateTo('/about')" >About</a>
-        |
-        <a class="btn" routerLink="/employees-list" href="/employees-list" (click)="navigateTo('/employees-list')" >Employee List</a>
-    </nav>
-</div>
-<router-outlet></router-outlet>
+<h1 class="pill pill-group ">Full stack Application with Angular and DotNet Core Api <a class="pill" href="https://angular.io/">Angular</a></h1>
+<app-employees-list></app-employees-list>
