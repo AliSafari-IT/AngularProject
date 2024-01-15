@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     { title: 'Material-UI', route: '/material/components', active: false },
     { title: 'About', route: '/about', active: false },
     { title: 'Contact', route: '/contact', active: false },
+    { title: 'Contact Lazy', route: '/contactlazy', active: false },
   ];
   
   constructor(private employeeService: EmployeeService, private router: Router) { }

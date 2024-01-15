@@ -11,9 +11,13 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 export const routes = [
   { path: 'change-log', component: ChangeLogContentComponent },
   { path: 'home', component: HomePageComponent },
-   { path: 'about', component: AboutPageComponent}, 
-   { path: 'contact', component: ContactComponent},
+  { path: 'about', component: AboutPageComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'employees-list', component: EmployeesListComponent },
   { path: 'material/components', component: MuiExamplesComponent },
+  {
+    path: 'contactlazy',
+    loadChildren: () => import('./pages/contact/contact-routing.module').then(m => m.ContactRoutingModule)
+  },
   { path: '**', component: NotFoundComponent }
 ];
