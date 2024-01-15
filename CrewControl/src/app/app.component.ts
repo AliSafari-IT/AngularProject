@@ -33,9 +33,10 @@ export class AppComponent implements OnInit {
   navItems: NavItem[] = [
     { title: 'Home', route: '/home', active: false },
     { title: 'Recent Changes', route: '/change-log', active: false },
-    { title: 'About', route: '/about', active: false },
     { title: 'Employee List', route: '/employees-list', active: false },
     { title: 'Material-UI', route: '/material/components', active: false },
+    { title: 'About', route: '/about', active: false },
+    { title: 'Contact', route: '/contact', active: false },
   ];
   
   constructor(private employeeService: EmployeeService, private router: Router) { }
