@@ -5,10 +5,12 @@
                 title="Full stack Application with Angular and DotNet Core Api" width="35px" />
         </a>
         <!-- Dynamic Menu Items -->
-        <a *ngFor="let item of navItems" class="btn {{item.active? 'active': ''}}" (click)="toggleActive(item)">
+        <a *ngFor="let item of navItems" class="btn {{item.active? 'active': ''}}" (click)="toggleActive(item)" routerLink="{{item.route}}">
             {{ item.title }}
         </a>
     </div>
 </nav>
+
+
 
 <router-outlet></router-outlet>
