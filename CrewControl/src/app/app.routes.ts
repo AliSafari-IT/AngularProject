@@ -12,7 +12,6 @@ export const routes = [
   { path: 'change-log', component: ChangeLogContentComponent },
   { path: 'home', component: HomePageComponent },
    { path: 'about', component: AboutPageComponent}, 
-   { path: 'about-lazy', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)},
    { path: 'contact', component: ContactComponent},
   { path: 'employees-list', component: EmployeesListComponent },
   { path: 'material/components', component: MuiExamplesComponent },
