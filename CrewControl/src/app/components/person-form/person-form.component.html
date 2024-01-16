@@ -1,13 +1,15 @@
 <main>
     <header>
         <h1>Form Handling and Validation in Angular</h1>
-        <p>This form allows users to add new employee details more effectively and ensures
-            data integrity with comprehensive client-side validation.
+        <p>This form allows users to add new persons and view details more effectively and ensures
+            data integrity with comprehensive client-side validation and server-side validation.
         </p>
     </header>
 
 
     <section class="add-new-person">
+        <app-notifications
+            infoMessage="{{infoMessage}}" successMessage="{{successMessage}}" warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}"></app-notifications>
         <div class="formCntrlButtonsContainer">
             <button mat-raised-button class="primary formCntrlButtons" (click)="showPersons()" *ngIf="!showPersonsList">Pesrsons List</button>
             <button mat-raised-button class="primary formCntrlButtons" (click)="toggleForm()" *ngIf="!isOpen"
@@ -132,7 +134,5 @@
                     class="primary formCntrlButtons">Submit</button>
             </div>
         </form>
-        <app-notifications infoMessage="{{infoMessage}}" successMessage="{{successMessage}}"
-            warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}"></app-notifications>
     </section>
 </main>

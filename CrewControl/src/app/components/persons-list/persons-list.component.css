@@ -92,6 +92,15 @@
     display: none;
   }
   
+  .no-person-found {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    color: #e41212;
+    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+  }
   /* Shows text alongside icons on larger screens */
   @media screen and (min-width: 768px) {
     .showIfViewIsWide {
