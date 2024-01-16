@@ -1,0 +1,31 @@
+.example-card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    background-color: #0e0e0e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: alias;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    height: '50vh';
+    width: '50vw';
+}
+
+.example-card{
+    margin: 20px;
+    padding: 20px;
+}

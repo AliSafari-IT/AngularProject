@@ -1,17 +1,16 @@
-<!-- c:/VS/AngularProject/MyApp/my-angular-app/src/app/app.component.html -->
-<div class="pill pill-group ">
+<nav class="top-menu">
+    <div class="float-left btn-group">
+        <a class="btn logo" routerLinkActive="active" routerLink="/" href="/">
+            <img src="../assets/img/materialui/card1.png"
+                title="Full stack Application with Angular and DotNet Core Api" width="35px" />
+        </a>
+        <!-- Dynamic Menu Items -->
+        <a *ngFor="let item of navItems" class="btn {{item.active? 'active': ''}}" (click)="toggleActive(item)" routerLink="{{item.route}}">
+            {{ item.title }}
+        </a>
+    </div>
+</nav>
 
-    <a class="pill" href="/" (click)="navigateTo('/')">
-        Full stack Application with Angular and DotNet Core Api
-    </a>
-    <nav>
-        <a class="btn" routerLink="/home" href="/home" (click)="navigateTo('/home')" >Home</a>
-        |
-        <a class="btn" routerLink="/change-log" href="/change-log" (click)="navigateTo('/change-log')" >Recent Changes</a>
-        |
-        <a class="btn" routerLink="/about" href="/about" (click)="navigateTo('/about')" >About</a>
-        |
-        <a class="btn" routerLink="/employees-list" href="/employees-list" (click)="navigateTo('/employees-list')" >Employee List</a>
-    </nav>
-</div>
+
+
 <router-outlet></router-outlet>
