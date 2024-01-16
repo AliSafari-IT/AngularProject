@@ -2,16 +2,13 @@
     <header>
         <h2>Persons List</h2>
         <!-- Search bar -->
-        <input class="search-bar" type="text" placeholder="Search..." />
+        <input class="search-bar" type="text" placeholder="Search..." [(ngModel)]="searchInput" (ngModelChange)="searchPerson()" />
     </header>
+    <app-notifications infoMessage="{{infoMessage}}" successMessage="{{successMessage}}" warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}"></app-notifications>
     <table class="person-table">
       <thead class="theader">
         <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Actions</th>
+          <th *ngFor="let column of displayedColumns">{{ column }}</th>
         </tr>
       </thead>
       <tbody>
@@ -21,13 +18,13 @@
           <td>{{ person.lastName }}</td>
           <td>{{ person.email }}</td>
           <td class="actions">
-            <button (click)="onEdit(person)" class="edit"><span class="showIfViewIsWide">Edit </span><i class="fa fa-edit" aria-hidden="true"></i></button>
-            <button (click)="onDelete(person)" class="delete"><span class="showIfViewIsWide">Delete </span><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button (click)="onEditPerson(person)" class="edit"><span class="showIfViewIsWide">Edit </span><i class="fa fa-edit" aria-hidden="true"></i></button>
+            <button (click)="onDeletePerson(person)" class="delete"><span class="showIfViewIsWide">Delete </span><i class="fa fa-trash" aria-hidden="true"></i></button>
             <button (click)="onViewDetails(person)" class="details"><span class="showIfViewIsWide">Details </span><i class="fa fa-info-circle" aria-hidden="true"></i></button>
           </td>          
         </tr>
       </tbody>
     </table>
-    <p *ngIf="persons.length === 0">No persons found.</p>
+    <p *ngIf="persons.length === 0" class="no-person-found">No persons found.</p>
   </section>
   

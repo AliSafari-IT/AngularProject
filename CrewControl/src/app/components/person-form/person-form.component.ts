@@ -14,7 +14,6 @@ import { PersonsListComponent } from '../persons-list/persons-list.component';
   standalone: true,
   providers: [PersonService],
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule, NotificationsComponent, PersonsListComponent ],
-
 })
 export class PersonFormComponent implements OnInit {
 
@@ -47,6 +46,7 @@ export class PersonFormComponent implements OnInit {
   toggleForm() {
     this.isOpen = !this.isOpen;
     this.showPersonsList = false;
+    this.resetNotifications();
     console.log("isOpen: " + this.isOpen);
   }
   constructor(private fb: FormBuilder, private personService: PersonService) {     // Initialize the form
@@ -69,7 +69,7 @@ export class PersonFormComponent implements OnInit {
   showPersons() {
     this.showPersonsList = !this.showPersonsList;
     this.isOpen = false;
-
+    this.resetNotifications();
     }
 
   ngOnInit(): void {
@@ -93,6 +93,7 @@ export class PersonFormComponent implements OnInit {
         console.log('Employee added successfully');
         this.personService.notifyPersonUpdate();
         this.onCloseButtonClick();
+        this.isOpen = false;
         // Reset the form
         this.resetForm();
         // Handle the response from the API
@@ -103,21 +104,6 @@ export class PersonFormComponent implements OnInit {
         this.errorMessage = error.error;
         this.warningMessage = error.error;
       });
-
-      // this.personService.addPerson(this.personForm).subscribe((response) => {
-      //   this.addPersonSuccess = true;
-      //   this.submissionSuccess.emit();
-      //   console.log('Employee added successfully');
-      //   this.personService.notifyPersonUpdate();
-      //   this.onCloseButtonClick();
-      //   // Reset the form
-      //   this.personForm.reset();
-      //   // Handle the response from the API
-      //   console.log(response);
-      // }, error => {
-      //   // Handle any errors that occur during the API call
-      //   console.error(error);
-      // });
 
       // Emit the event
       this.submitClicked.emit();
@@ -131,5 +117,13 @@ export class PersonFormComponent implements OnInit {
   // Reset the form
   resetForm() {
     this.personForm.reset();
+  }
+
+  // Reset the notifications messages
+  resetNotifications() {
+    this.infoMessage = null;
+    this.successMessage = null;
+    this.warningMessage = null;
+    this.errorMessage = null;
   }
 }
