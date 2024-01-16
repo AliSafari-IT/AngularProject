@@ -1,10 +1,4 @@
-main {
-    padding: 3px;
-}
-
-section {
-    margin: 10px;
-}
+main {}
 
 header {
     background-color: #333;
@@ -31,20 +25,14 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
 footer {
     text-align: center;
     background-color: #333;
     color: #fff;
     /* Keep footer at the bottom */
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
-}
-
-.contact {
-    margin: auto;
-    width: 80%;
-    padding-top: 30px;
 
 }
-

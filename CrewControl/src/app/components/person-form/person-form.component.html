@@ -1,0 +1,136 @@
+<main>
+    <header>
+        <h1>Form Handling and Validation in Angular</h1>
+        <p>This form allows users to add new employee details more effectively and ensures
+            data integrity with comprehensive client-side validation.
+        </p>
+    </header>
+
+
+    <section class="add-new-person">
+        <div class="formCntrlButtonsContainer">
+            <button mat-raised-button class="primary formCntrlButtons left" (click)="toggleForm()" *ngIf="!isOpen"
+                title="Add New Person"> Add New Person <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </button>
+            <button mat-raised-button class="danger formCntrlButtons right" (click)="toggleForm()" *ngIf="isOpen">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <form class="person-form" [formGroup]="personForm" (ngSubmit)="onSubmit()" *ngIf="isOpen">
+            <!-- First Name -->
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" formControlName="firstName">
+                <div *ngIf="personForm.get('firstName')?.errors" class="isRequired">
+                    First name is required.
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" formControlName="lastName">
+                <div *ngIf="personForm.get('lastName')?.errors" class="isRequired">
+                    Last name is required.
+                </div>
+            </div>
+
+            <!-- Age -->
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" formControlName="age">
+                <div *ngIf="personForm.get('age')?.errors" class="isRequired">
+                    <!-- Add specific error messages for age here -->
+                </div>
+            </div>
+
+            <!-- Gender and Marital Status -->
+            <div>
+                <label for="genderAndMaritalStatus">Gender: </label>
+                <label for="gender">Male</label>
+                <input type="radio" id="gender" name="gender" value="male" formControlName="gender">
+                <label for="gender">Female</label>
+                <input type="radio" id="gender" name="gender" value="female" formControlName="gender">
+                <label for="maritalStatus">Marital Status: </label>
+                <select id="maritalStatus" formControlName="maritalStatus">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                </select>
+            </div>
+
+            <!-- Address -->
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address" formControlName="address">
+                <div *ngIf="personForm.get('address')?.errors" class="isRequired">
+                    Address is required.
+                </div>
+            </div>
+
+            <!-- City -->
+            <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" formControlName="city">
+                <div *ngIf="personForm.get('city')?.errors" class="isRequired">
+                    City is required.
+                </div>
+            </div>
+
+            <!-- State -->
+            <div>
+                <label for="state">State:</label>
+                <input type="text" id="state" formControlName="state">
+                <div *ngIf="personForm.get('state')?.errors" class="isRequired">
+                    State is required.
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div>
+                <label for="country">Country:</label>
+                <input type="text" id="country" formControlName="country">
+                <div *ngIf="personForm.get('country')?.errors" class="isRequired">
+                    Country is required.
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" formControlName="email">
+                <div *ngIf="personForm.get('email')!.errors">
+                    <!-- Add specific error messages for email here -->
+                </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" formControlName="phoneNumber">
+                <div *ngIf="personForm.get('phoneNumber')?.errors" class="isRequired">
+                    Phone number is required.
+                </div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div>
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+                <div *ngIf="personForm.get('dateOfBirth')?.errors" class="isRequired">
+                    Date of birth is required.
+                </div>
+            </div>
+            <div class="formCntrlButtonsContainer">
+                <button id="warning-button" type="button" (click)="onCancel()"
+                    class="danger formCntrlButtons">Cancel</button>
+                <button id="reset-button" type="button" (click)="resetForm()"
+                    class="warning formCntrlButtons">Reset</button>
+                <button id="submit-button" type="submit" [disabled]="!personForm.valid"
+                    class="primary formCntrlButtons">Submit</button>
+            </div>
+        </form>
+        <app-notifications infoMessage="{{infoMessage}}" successMessage="{{successMessage}}"
+            warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}"></app-notifications>
+    </section>
+</main>

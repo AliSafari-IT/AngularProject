@@ -1,8 +1,10 @@
 export interface IPerson {
-    id: number;
+    id?: number;
     firstName: string;
     lastName: string;
     age: number;
+    gender: string;
+    maritalStatus: string;
     address: string;
     city: string;
     state: string;

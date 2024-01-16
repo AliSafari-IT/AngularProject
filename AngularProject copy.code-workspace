@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "CrewControl"
+		},
+		{
+			"path": "CrewControl.NetCoreApi"
+		},
+		{
+			"path": "AngularCRUDApplication"
+		},
+		{
+			"path": "AngularProject"
+		},
+		{
+			"path": "MyApp"
+		},
+		{
+			"path": "my-angular-app"
+		}
+	],
+	"settings": {}
+}
