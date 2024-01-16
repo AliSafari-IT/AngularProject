@@ -1,4 +1,5 @@
 import { MuiExamplesComponent } from "./components/materialui/mui-examples/mui-examples.component";
+import { PersonFormComponent } from "./components/person-form/person-form.component";
 import { AboutPageComponent } from "./pages/about/about-page.component";
 import { ChangeLogContentComponent } from "./pages/change-log/change-log-content.component";
 import { ContactComponent } from "./pages/contact/contact.component";
@@ -22,5 +23,7 @@ export const routes = [
     path: 'contactlazy',
     loadChildren: () => import('./pages/contact/contact-routing.module').then(m => m.ContactRoutingModule)
   },
+  { path: 'person-form', component: PersonFormComponent },
+
   { path: '**', component: NotFoundComponent }
 ];
