@@ -1,6 +1,6 @@
 .item-concluded {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 12px;
     color: rgb(6, 32, 148);
@@ -8,8 +8,7 @@
 }
 
 .tick-box {
-    width: 2cm;
-    height: 2cm;
+    padding: 10px;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -32,6 +31,15 @@
         /* Rounded corners */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         /* Subtle shadow */
+        font-family: Arial, sans-serif;
+        /* Use Arial font */
+        font-size: 13px;
+        /* Use larger font size */
+        line-height: 1.5;
+        /* Add some spacing between lines */
+        color: #333;
+        /* Default text color */
+
     }
 
     .main-item-title {

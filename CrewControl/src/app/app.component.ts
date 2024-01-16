@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from './Services/employee.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
-import { EmployeePersonListComponent } from './components/employee-person-list/employee-person-list.component';
-import { EmployeesListComponent } from './components/employees-list/employees-list.component';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router';
 import { NavItem } from './interfaces/navItem';
 
 @Component({
@@ -18,13 +13,8 @@ import { NavItem } from './interfaces/navItem';
   providers: [EmployeeService,],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    EmployeePersonListComponent,
-    EmployeesListComponent,
-    RouterOutlet,
-    MatButtonModule, MatMenuModule
-    
+    RouterModule,
   ]
 })
 
@@ -33,9 +23,11 @@ export class AppComponent implements OnInit {
   navItems: NavItem[] = [
     { title: 'Home', route: '/home', active: false },
     { title: 'Recent Changes', route: '/change-log', active: false },
-    { title: 'About', route: '/about', active: false },
     { title: 'Employee List', route: '/employees-list', active: false },
     { title: 'Material-UI', route: '/material/components', active: false },
+    { title: 'About', route: '/about', active: false },
+    { title: 'Contact', route: '/contact', active: false },
+    { title: 'Contact Lazy', route: '/contactlazy', active: false },
   ];
   
   constructor(private employeeService: EmployeeService, private router: Router) { }
