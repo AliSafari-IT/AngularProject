@@ -2,6 +2,13 @@
 
 ## [Recent Changes]
 
+Add new employee form with validation
+
+- Implement a reactive form for adding employee details.
+- Include client-side validation for the form fields.
+- Style the form for a modern, responsive layout.
+- Update service to handle new form data submission.
+
 - 2024-01-16 - Merge branch 'form-handling' [asafarim]
 - 2024-01-16 - Add new employee form with validation [asafarim]
 - 2024-01-16 - Merge branch 'frontend' [asafarim]
