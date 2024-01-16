@@ -9,13 +9,15 @@
 
     <section class="add-new-person">
         <div class="formCntrlButtonsContainer">
-            <button mat-raised-button class="primary formCntrlButtons left" (click)="toggleForm()" *ngIf="!isOpen"
+            <button mat-raised-button class="primary formCntrlButtons" (click)="showPersons()" *ngIf="!showPersonsList">Pesrsons List</button>
+            <button mat-raised-button class="primary formCntrlButtons" (click)="toggleForm()" *ngIf="!isOpen"
                 title="Add New Person"> Add New Person <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
-            <button mat-raised-button class="danger formCntrlButtons right" (click)="toggleForm()" *ngIf="isOpen">
+            <button mat-raised-button class="danger formCntrlButtons" (click)="toggleForm()" *ngIf="isOpen">
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
         </div>
+        <app-persons-list *ngIf="showPersonsList"></app-persons-list>
         <form class="person-form" [formGroup]="personForm" (ngSubmit)="onSubmit()" *ngIf="isOpen">
             <!-- First Name -->
             <div>

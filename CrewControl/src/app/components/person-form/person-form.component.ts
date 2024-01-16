@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonService } from '../../Services/person.service';
 import { NotificationsComponent } from "../../controls/notifications/notifications.component";
+import { PersonsListComponent } from '../persons-list/persons-list.component';
 
 @Component({
   selector: 'app-person-form',
@@ -12,7 +13,8 @@ import { NotificationsComponent } from "../../controls/notifications/notificatio
   styleUrls: ['./person-form.component.css'],
   standalone: true,
   providers: [PersonService],
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, NotificationsComponent]
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, NotificationsComponent, PersonsListComponent ],
+
 })
 export class PersonFormComponent implements OnInit {
 
@@ -37,12 +39,14 @@ export class PersonFormComponent implements OnInit {
   person: Person | undefined;
   addPersonSuccess: boolean = false;
   isOpen: boolean = false;
+  showPersonsList: boolean = false;
   infoMessage: any;
   successMessage: any;
   warningMessage: any;
   errorMessage: any;
   toggleForm() {
     this.isOpen = !this.isOpen;
+    this.showPersonsList = false;
     console.log("isOpen: " + this.isOpen);
   }
   constructor(private fb: FormBuilder, private personService: PersonService) {     // Initialize the form
@@ -61,6 +65,12 @@ export class PersonFormComponent implements OnInit {
       dateOfBirth: ['', Validators.required],
     });
   }
+
+  showPersons() {
+    this.showPersonsList = !this.showPersonsList;
+    this.isOpen = false;
+
+    }
 
   ngOnInit(): void {
 
