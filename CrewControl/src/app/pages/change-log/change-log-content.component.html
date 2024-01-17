@@ -3,7 +3,52 @@
     <div class="recent-changes">
         <h2>Recent Changes</h2>
 
-        <div class="change-date">2024-01-16 - Part 2 [<a href="https://github.com/AliSafari-IT/AngularProject/tree/form-handling" target="_blank">Git branch: form-handling</a>]</div>
+        <div class="change-date">2024-01-16 - Part 2 [<a
+                href="https://github.com/AliSafari-IT/AngularProject/tree/form-handling" target="_blank">Git branch:
+                form-handling</a>]</div>
+        <h4>Enhanced Person Management Functionality in Angular App</h4>
+        <ol>
+            <li><strong>Refactored :</strong> 'PersonFormComponent' for adding and editing persons.</li>
+            <ul>
+                - Integrated 'SharedService' for managing selected person data.
+                <li><strong>Implemented:</strong> efficient form submission logic with 'preparePersonData',
+                    'updatePerson', and 'addPerson' methods. </li>
+                <li><strong>Improved:</strong> form population for edit mode with 'populateForm'.</li>
+                <li><strong>Enhanced:</strong> error handling and success response management.</li>
+                <li><strong>Added:</strong> ID and DateOfBirth controls to the form with default values and proper
+                    formatting.</li>
+            </ul>
+            <li><strong>Updated:</strong> 'PersonsListComponent' for displaying persons data.</li>
+            <ul>
+                <li><strong>Added:</strong> event emitters for edit, delete, and view details actions. </li>
+                <li><strong>Implemented:</strong> edit person functionality to open 'PersonFormComponent' in edit mode.
+                </li>
+                <li><strong>Improved:</strong> person search functionality.</li>
+                <li><strong>Streamlined:</strong> event handling for list and form interactions.</li>
+            </ul>
+            <li><strong>Introduced:</strong> 'SharedService' for state management.</li>
+            <ul>
+                <li>Created a shared service for managing the state of the selected person.</li>
+                <li>Utilized BehaviorSubject for reactive state management.</li>
+            </ul>
+            <li><strong>General Improvements:</strong> </li>
+            <li>Optimized imports and dependencies across components and services.</li>
+            <li>Cleaned up unused methods and streamlined event handling.</li>
+            <li>Enhanced user interface responsiveness and interaction flow between person list and edit form.</li>
+            <ul>
+            </ul>
+        </ol>
+        <div>
+            <h5>Notes:</h5>
+            This update significantly boosts the application's person management capabilities, offering a more intuitive
+            and efficient user experience.
+            <br>
+        </div>
+
+
+        <div class="change-date">2024-01-16 - Part 2 [<a
+                href="https://github.com/AliSafari-IT/AngularProject/tree/form-handling" target="_blank">Git branch:
+                form-handling</a>]</div>
         <h4>Enhance Persons List Component with Search and Deletion Confirmation</h4>
         <ul>
             <li><strong>Enhance:</strong> Persons List Component with Search and Deletion Confirmation.</li>

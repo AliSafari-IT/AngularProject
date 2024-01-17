@@ -9,7 +9,8 @@
 
     <section class="add-new-person">
         <app-notifications
-            infoMessage="{{infoMessage}}" successMessage="{{successMessage}}" warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}"></app-notifications>
+            infoMessage="{{infoMessage}}" successMessage="{{successMessage}}" warningMessage="{{warningMessage}}" errorMessage="{{errorMessage}}">
+        </app-notifications>
         <div class="formCntrlButtonsContainer">
             <button mat-raised-button class="primary formCntrlButtons" (click)="showPersons()" *ngIf="!showPersonsList">Pesrsons List</button>
             <button mat-raised-button class="primary formCntrlButtons" (click)="toggleForm()" *ngIf="!isOpen"
@@ -19,12 +20,13 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
         </div>
-        <app-persons-list *ngIf="showPersonsList"></app-persons-list>
+        <app-persons-list *ngIf="showPersonsList"  (editPerson)="onEditPerson($event)" (editPersonDetails)="onViewPersonDetails($event)"></app-persons-list>
+
         <form class="person-form" [formGroup]="personForm" (ngSubmit)="onSubmit()" *ngIf="isOpen">
             <!-- First Name -->
             <div>
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" formControlName="firstName">
+                <input type="text" id="firstName" formControlName="firstName" formControlName="firstName">
                 <div *ngIf="personForm.get('firstName')?.errors" class="isRequired">
                     First name is required.
                 </div>

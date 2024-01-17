@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Person } from '../models/Person';
 import { FormGroup } from '@angular/forms';
 
@@ -11,6 +11,15 @@ export class PersonService {
 
   private personUpdateSource = new Subject<void>();
   employeeUpdate$ = this.personUpdateSource.asObservable();
+  selectedPerson: Person | undefined;
+  // In a shared service
+  private selectedPersonSource = new BehaviorSubject<Person | null>(null);
+  selectedPerson$ = this.selectedPersonSource.asObservable();
+
+  selectPersonForEdit(person: Person) {
+    this.selectedPersonSource.next(person);
+  }
+
 
   notifyPersonUpdate() {
     this.personUpdateSource.next();
@@ -53,7 +62,8 @@ export class PersonService {
   }
 
   putPerson(person: Person): Observable<Person> {
-    const url = `${this.personsUrl}/${person.id}`;
-    return this.http.put<Person>(url, person);
+    console.log('putPerson', person);
+    const url = `${this.personsUrl}`;
+    return this.http.put<Person>(url, person, { responseType: 'text' as 'json'});
   }
 }

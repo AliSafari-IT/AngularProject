@@ -8,12 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-addedit-employee-form',
   standalone: true,
-  imports: [CommonModule, HttpClientModule,ReactiveFormsModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './addedit-employee-form.component.html',
   styleUrl: './addedit-employee-form.component.scss',
   providers: [],
   styles: [],
-  
+
 })
 export class AddEditEmployeeFormComponent implements
 
@@ -23,22 +23,24 @@ export class AddEditEmployeeFormComponent implements
   @Input() isEditMode: boolean = false;
   @Input() selectedEmployee: Employee | undefined;
   @Output() submitClicked = new EventEmitter<void>();
+  @Output() infoMessage = '';
 
   addEmployeeSuccess: boolean = false;
-  formData: FormGroup<{ employeeId: FormControl<any>; department: FormControl<any>; dateOfJoining: FormControl<any>; personId: FormControl<any>; }>;
+  formData: FormGroup<any>;
   isAddingEmployee: any;
   isEditingEmployee: any;
   isModalOpen: boolean = true;
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
-    this.formData = this.fb.group({
-      department: new FormControl('', Validators.required), // Add Validators.required
-      dateOfJoining: new FormControl('', Validators.required), // Add Validators.required
-      personId: new FormControl('', Validators.required), // Add Validators.required
-      employeeId: new FormControl(''),
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService) {
+    this.formData = this.formBuilder.group({
+      employeeId: [''],
+      department: [''],
+      dateOfJoining: [''],
+      personId: ['']
+      // Add other form controls here
     });
   }
-  
+
   ngOnInit(): void {
     if (this.selectedEmployee) {
       this.formData.patchValue({
@@ -59,16 +61,82 @@ export class AddEditEmployeeFormComponent implements
       // Emit the event
       // this.submitClicked.emit();
     } else {
-      this.addEmployee();
+      // this.addEmployee();
+      this.addNewEmployee();
     }
+  }
+
+  addNewEmployee() {
+    console.log({"addNewEmployee called": this.formData});
+    const newEmployee: Employee = {
+      employeeId: 0,
+      department: this.formData.value.department,
+      dateOfJoining: this.formData.value.dateOfJoining,
+      personId: this.formData.value.personId,
+      person: undefined,
+      isSelected: false
+    }
+    // Logic to add a new employee
+    this.employeeService.addNewEmployee(newEmployee).subscribe(
+      (response) => {
+        console.log('Employee added:', response);
+        // Assuming 'response' contains the necessary info when adding is successful
+        this.addEmployeeSuccess = true;
+        this.submissionSuccess.emit();
+        this.employeeService.notifyEmployeeUpdate();
+        this.infoMessage = 'Employee added successfully';
+        // Reset the form and close the modal
+        this.resetForm();
+      }
+    );
 
   }
   addEmployee() {
     // Logic to add a new employee
-    this.employeeService.addEmployee(this.formData).subscribe(() => {
+    this.employeeService.addEmployee(this.formData.value).subscribe(
+      (response) => {
+        console.log('Employee added:', response.person?.firstName, response.person?.lastName);
+        // Assuming 'response' contains the necessary info when adding is successful
+        this.addEmployeeSuccess = true;
+        this.submissionSuccess.emit();
+        this.employeeService.notifyEmployeeUpdate();
+        this.infoMessage = 'Employee added successfully';
+        // Reset the form and close the modal
+        this.resetForm();
+      },
+      (error) => {
+        // Handle error response here
+        if (error.status === 404) { // Assuming 404 status code for non-existing personId
+          this.infoMessage = 'Person ID does not exist. Please use another Person ID.';
+        } else {
+          // Handle other types of errors
+          this.infoMessage = 'Error occurred while adding employee: ' + error.message;
+        }
+        console.error('Error adding employee:', error);
+      }
+    );
+  }
+
+  resetForm() {
+    this.formData.reset();
+    this.isModalOpen = false;
+    this.onCloseButtonClick();
+  }
+
+  addEmployee1() {
+    // Logic to add a new employee
+    this.employeeService.addEmployee(this.formData).subscribe((prsn) => {
+      console.log('Employee added:', prsn.person?.firstName, prsn.person?.lastName);
+      if (prsn) {
+        this.addEmployeeSuccess = true;
+        this.submissionSuccess.emit();
+        this.employeeService.notifyEmployeeUpdate();
+        this.onCloseButtonClick();
+        this.infoMessage = 'Employee added successfully';
+      }
+
       this.addEmployeeSuccess = true;
       this.submissionSuccess.emit();
-      console.log('Employee added successfully');
       this.employeeService.notifyEmployeeUpdate();
       this.onCloseButtonClick();
 

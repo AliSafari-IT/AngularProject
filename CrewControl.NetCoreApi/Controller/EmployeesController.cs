@@ -23,6 +23,19 @@ namespace CrewControl.NetCoreApi.Controller
             return Ok(); // Or return CreatedAtAction if you want to return the created employee data
         }
 
+        [HttpPost("New")]
+        public async Task<IActionResult> AddNewEmployee([FromBody] Employee employee)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdEmployee = await _employeeService.AddNewEmployeeAsync(employee);
+            return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId }, createdEmployee);
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
