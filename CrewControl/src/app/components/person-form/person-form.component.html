@@ -20,7 +20,7 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
         </div>
-        <app-persons-list *ngIf="showPersonsList"></app-persons-list>
+        <app-persons-list *ngIf="showPersonsList"  (editPerson)="onEditPerson($event)" (editPersonDetails)="onViewPersonDetails($event)"></app-persons-list>
 
         <form class="person-form" [formGroup]="personForm" (ngSubmit)="onSubmit()" *ngIf="isOpen">
             <!-- First Name -->

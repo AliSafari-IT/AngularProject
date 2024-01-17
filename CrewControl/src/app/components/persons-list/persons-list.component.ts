@@ -25,7 +25,7 @@ export class PersonsListComponent implements OnInit, OnDestroy {
   @Output() editPerson = new EventEmitter<Person>();
   @Output() deletePerson = new EventEmitter<Person>();
   @Output() viewPerson = new EventEmitter<Person>();
-  @Output() showPersonsList: boolean = false;
+  @Input() showPersonsList= new EventEmitter<boolean>();
 
   persons: Person[] = [];
   searchResults: Person[] = [];
@@ -87,9 +87,16 @@ export class PersonsListComponent implements OnInit, OnDestroy {
     this.selectedPerson = selectedPerson;
     // Emit an event or use a shared service to notify PersonFormComponent
     this.editPerson.emit(selectedPerson); // Assuming you have an EventEmitter
-    this.showPersonsList = false;
+    this.showPersonsList.emit(false); // Emitting this event to close the person list and open the person form;
+    this.resetNotifications();
 
     console.log('Edit person: ' + selectedPerson.id);
+  }
+  resetNotifications() {
+    this.infoMessage = null;
+    this.successMessage = null;
+    this.warningMessage = null;
+    this.errorMessage = null;
   }
 
   ngOnInit(): void {
