@@ -18,7 +18,7 @@ namespace CrewControl.NetCoreApi.Services
 
 
         // Create (Add) an Employee
-        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        public async Task<Employee> AddNewEmployeeAsync(Employee employee)
         {
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();

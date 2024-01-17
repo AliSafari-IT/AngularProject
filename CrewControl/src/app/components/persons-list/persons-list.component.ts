@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PersonService } from '../../Services/person.service';
 import { Person } from '../../models/Person';
 import { CommonModule } from '@angular/common';
@@ -19,6 +19,14 @@ import { NotificationsComponent } from "../../controls/notifications/notificatio
 export class PersonsListComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject<void>();
+  @Input() isEditMode: boolean = false;
+  @Input() isOpen: boolean = false;
+  @Input() selectedPerson: Person | undefined;
+  @Output() editPerson = new EventEmitter<Person>();
+  @Output() deletePerson = new EventEmitter<Person>();
+  @Output() viewPerson = new EventEmitter<Person>();
+  @Output() showPersonsList: boolean = false;
+
   persons: Person[] = [];
   searchResults: Person[] = [];
   allPersons: Person[] = [];
@@ -49,17 +57,13 @@ export class PersonsListComponent implements OnInit, OnDestroy {
             (data) => {
               this.dialog.closeAll();
               this.personService.notifyPersonUpdate();
-              this.persons = this.persons.filter(p => p.id !== prsn.id);   
+              this.persons = this.persons.filter(p => p.id !== prsn.id);
               // Add info message about who was deleted
-              this.successMessage = `${prsn.firstName} with ID ${prsn.id} just was deleted successfully from the database!`;
-
-
-               // other messages become null
+              this.successMessage = `${prsn.firstName} with ID ${prsn.id} was just deleted successfully from the database!`;
+              // other messages become null
               this.infoMessage = null;
               this.warningMessage = null;
               this.errorMessage = null;
-
-
               console.log('Deleted successfully!');
             }
           )
@@ -70,12 +74,22 @@ export class PersonsListComponent implements OnInit, OnDestroy {
     });
     return;
   }
-  onViewDetails(_t13: Person) {
+  onViewDetails(selectedPerson: Person) {
     throw new Error('Method not implemented.');
   }
 
-  onEditPerson(_t13: Person) {
-    throw new Error('Method not implemented.');
+  onEditPerson(selectedPerson: Person) {
+    // TODO : Implement edit person dialog
+    // Display a dialog with the person details and allow editing and saving changes
+    // Use app-person-form component to display the form with the person details
+    this.isEditMode = true;
+    this.isOpen = true;
+    this.selectedPerson = selectedPerson;
+    // Emit an event or use a shared service to notify PersonFormComponent
+    this.editPerson.emit(selectedPerson); // Assuming you have an EventEmitter
+    this.showPersonsList = false;
+
+    console.log('Edit person: ' + selectedPerson.id);
   }
 
   ngOnInit(): void {

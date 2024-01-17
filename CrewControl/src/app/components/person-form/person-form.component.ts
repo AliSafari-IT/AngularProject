@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Person } from '../../models/Person';
 import { CommonModule } from '@angular/common';
@@ -13,13 +13,18 @@ import { PersonsListComponent } from '../persons-list/persons-list.component';
   styleUrls: ['./person-form.component.css'],
   standalone: true,
   providers: [PersonService],
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, NotificationsComponent, PersonsListComponent ],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, NotificationsComponent, PersonsListComponent],
 })
 export class PersonFormComponent implements OnInit {
 
   @Output() closeForm = new EventEmitter<void>();
   @Output() submissionSuccess = new EventEmitter<void>(); // New event emitter
   @Output() submitClicked = new EventEmitter<void>();
+  @Input() isEditMode: boolean = false;
+  @Input() isOpen: boolean = false;
+  @Input() selectedPerson: Person | undefined;
+  @Input() showPersonsList: boolean = false;
+
   personForm: FormGroup<{
     firstName: FormControl<any>;
     lastName: FormControl<any>;
@@ -37,8 +42,7 @@ export class PersonFormComponent implements OnInit {
 
   person: Person | undefined;
   addPersonSuccess: boolean = false;
-  isOpen: boolean = false;
-  showPersonsList: boolean = false;
+  
   infoMessage: any;
   successMessage: any;
   warningMessage: any;
@@ -70,7 +74,7 @@ export class PersonFormComponent implements OnInit {
     this.showPersonsList = !this.showPersonsList;
     this.isOpen = false;
     this.resetNotifications();
-    }
+  }
 
   ngOnInit(): void {
 
@@ -79,6 +83,9 @@ export class PersonFormComponent implements OnInit {
   // Method to emit the event
   onCloseButtonClick(): void {
     this.closeForm.emit();
+    this.isEditMode = false;
+    this.selectedPerson = undefined;
+    this.resetForm();
   }
 
   onSubmit() {

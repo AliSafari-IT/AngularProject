@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { Person } from '../models/Person';
@@ -14,6 +14,7 @@ export class EmployeeService {
   employeeUpdate$ = this.employeeUpdateSource.asObservable();
 
   private employeesUrl = 'https://localhost:44354/api/Employees';
+  private newEmployeeUrl = 'https://localhost:44354/api/Employees/New';
   private personsUrl = 'https://localhost:44354/api/Persons';
 
   constructor(private http: HttpClient) { }
@@ -54,6 +55,10 @@ export class EmployeeService {
     return this.http.post<Employee>(this.employeesUrl, null, { params });
   }
 
+  addNewEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.newEmployeeUrl, employee);
+  }
+
   deleteEmployeeById(employeeId: number): Observable<any> {
     const url = `${this.employeesUrl}/${employeeId}`;
     return this.http.delete<any>(url);
@@ -61,8 +66,8 @@ export class EmployeeService {
 
   updateEmployee(selectedEmployee: Employee) {
     const url = `${this.employeesUrl}/${selectedEmployee.employeeId}`;
-    console.log("selectedEmployee in update:", {url, selectedEmployee});
-    
+    console.log("selectedEmployee in update:", { url, selectedEmployee });
+
     return this.http.put<Employee>(url, selectedEmployee);
   }
 

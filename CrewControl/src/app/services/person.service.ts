@@ -11,6 +11,7 @@ export class PersonService {
 
   private personUpdateSource = new Subject<void>();
   employeeUpdate$ = this.personUpdateSource.asObservable();
+  selectedPerson: Person | undefined;
 
   notifyPersonUpdate() {
     this.personUpdateSource.next();
