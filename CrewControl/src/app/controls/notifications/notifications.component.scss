@@ -1,0 +1,47 @@
+/**
+* notifications-component
+*/
+.notifications-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #dbf3f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+.alert {
+    margin: 5px 0px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.alert-danger {
+    color: #fa2b2b;
+}
+
+.alert-success {
+    color: #277503;
+}
+
+.alert-info {
+    color: #5770fc;
+}
+
+.alert-info-html {
+    color: #02199c;
+    font-size: 11px;
+    li {
+        text-decoration: underline;
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0px 50px;
+        font: 1em sans-serif;
+    }
+    
+}
+.alert-warning {
+    color: #dd8006;
+}

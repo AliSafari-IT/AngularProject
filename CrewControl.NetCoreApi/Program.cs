@@ -11,10 +11,21 @@ builder.Services.AddDbContext<CDbContext>(options =>
         sqlServerOptionsAction: sqlOptions =>
         {
             sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 5, // Maximum number of retries
-                maxRetryDelay: TimeSpan.FromSeconds(30), // Maximum delay between retries
+                maxRetryCount: 3, // Maximum number of retries
+                maxRetryDelay: TimeSpan.FromSeconds(10), // Maximum delay between retries
                 errorNumbersToAdd: null); // SQL error numbers to consider as transient
         }));
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 
 // Add services to the container.
@@ -40,7 +51,7 @@ app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllers();  // This line is important for routing to controllers
+    _ = endpoints.MapControllers();  // This line is important for routing to controllers
 });
 
 app.Run();

@@ -13,13 +13,12 @@ namespace CrewControl.NetCoreApi.Services
         }
         public async Task<List<Employee>> GetAllEmployeesAsync()
         {
-            return await _context.Persons
-                                 .OfType<Employee>()  // Filters to include only Employee records
-                                 .ToListAsync();
+            return await _context.Employees.ToListAsync();
         }
 
+
         // Create (Add) an Employee
-        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        public async Task<Employee> AddNewEmployeeAsync(Employee employee)
         {
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();

@@ -39,3 +39,9 @@ obj/
 /wwwroot/node_modules
 
 .vs/
+AngularCRUDApplication
+.vscode/extensions.json
+AngularCRUDApplication/angular.json
+AngularCRUDApplication/package-lock.json
+EmployeeWebAPIApplication
+

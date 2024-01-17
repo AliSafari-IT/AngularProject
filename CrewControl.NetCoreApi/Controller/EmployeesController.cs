@@ -1,6 +1,7 @@
 ﻿using CrewControl.NetCoreApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrewControl.NetCoreApi.Controller
 {
@@ -21,6 +22,19 @@ namespace CrewControl.NetCoreApi.Controller
             await _employeeService.AddEmployeeAsync(personId, department, dateOfJoining);
             return Ok(); // Or return CreatedAtAction if you want to return the created employee data
         }
+
+        [HttpPost("New")]
+        public async Task<IActionResult> AddNewEmployee([FromBody] Employee employee)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdEmployee = await _employeeService.AddNewEmployeeAsync(employee);
+            return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId }, createdEmployee);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
@@ -72,18 +86,12 @@ namespace CrewControl.NetCoreApi.Controller
             return Ok(employees);
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var createdEmployee = await _employeeService.AddEmployeeAsync(employee);
-        //    return CreatedAtAction("GetEmployee", new { id = createdEmployee.EmployeeId }, createdEmployee);
-        //}
-
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
+        {
+            var employees = await _employeeService.GetAllEmployeesAsync();
+            return Ok(employees);
+        }
 
     }
 }

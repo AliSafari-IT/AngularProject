@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+article {
+    /* 2 columns */
+    column-count: 2;
+    column-gap: 40px;
+    background-color: #d9f0ef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.article-col-1{
+    column-count: 1;
+}
+
+article ul,
+article ul li {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    /* Prevents breaking list items across columns */
+}
+
+article h1 {
+    color: #1c80f1;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+article h2  {
+    color: #4b15ca;
+    font-size: 13px;    
+}
+.changelog-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+.recent-changes h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.change-date {
+    font-weight: bold;
+    color: #555;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 3px solid #5cb85c;
+}
+
+li strong {
+    color: #2a2a2a;
+}

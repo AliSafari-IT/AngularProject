@@ -1,0 +1,42 @@
+.example-btn-tgl {
+    margin: 35px;
+}
+
+.btn-tgl-value-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 40%;
+    margin: 20px 0;
+}
+
+.btn-tgl-selected-value {
+    margin: 15px 0;
+}
+
+.btn-tgl-reset {
+    margin: 15px 5px 0 0;
+    color: #fcf4f4;
+    cursor: pointer;
+    font-size: 12px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+
+.underline {
+    text-decoration: underline;
+}
+.italic {
+    font-style: italic;
+}
+.bold {
+    font-weight: bold;
+}
+
+.btn-tgl-reset:hover {
+    background-color: #fcf4f4;
+    color: black;
+}

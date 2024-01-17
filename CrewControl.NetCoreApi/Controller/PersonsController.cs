@@ -25,6 +25,19 @@ namespace CrewControl.NetCoreApi.Controllers
             return await _context.Persons.ToListAsync();
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Person>> GetPerson(int id)
+        {
+            var person = await _context.Persons.FindAsync(id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return person;
+        }
+
+
         // POST: api/Persons
         [HttpPost]
         public async Task<ActionResult<Person>> PostPerson(Person person)
@@ -36,10 +49,12 @@ namespace CrewControl.NetCoreApi.Controllers
         }
 
         // PUT: api/Persons/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson(int id, Person person)
+        // [HttpPut("{id}")]
+        [HttpPut]
+        public async Task<IActionResult> PutPerson(Person person)
         {
-            if (id != person.Id)
+            Person person1 = person;
+            if (person1.Id == null)
             {
                 return BadRequest();
             }
@@ -52,7 +67,7 @@ namespace CrewControl.NetCoreApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!PersonExists(person.Id))
                 {
                     return NotFound();
                 }
