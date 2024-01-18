@@ -1,12 +1,12 @@
 <article class="article-col-1">
     <h1>Change Log</h1>
     <div class="recent-changes">
-        <h2>Recent Changes</h2>
+        <h2>Blog posts & Recent Changes</h2>
 
         <div class="change-date">2024-01-16 - Part 2 [<a
                 href="https://github.com/AliSafari-IT/AngularProject/tree/form-handling" target="_blank">Git branch:
                 form-handling</a>]</div>
-        <h4>Enhanced Person Management Functionality in Angular App</h4>
+        <h4 class="change-title">Enhanced Person Management Functionality in Angular App</h4>
         <ol>
             <li><strong>Refactored :</strong> 'PersonFormComponent' for adding and editing persons.</li>
             <ul>
@@ -38,18 +38,24 @@
             <ul>
             </ul>
         </ol>
-        <div>
-            <h5>Notes:</h5>
-            This update significantly boosts the application's person management capabilities, offering a more intuitive
-            and efficient user experience.
-            <br>
-        </div>
 
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                Hold onto your hats, folks, because we just turbocharged our Angular app's person management system! 🚀<br>
+                First up, the 'PersonFormComponent' isn't just refactored; it's reborn! We've integrated the 'SharedService' to juggle person data like a circus artist. 🎪 And the form submission logic? It's smoother than a jazz saxophonist, thanks to our new 'preparePersonData', 'updatePerson', and 'addPerson' methods. 🎷<br>
+                Editing a person is now as intuitive as scrolling through your favorite playlist, all thanks to the 'populateForm' method. And our error handling? It's so robust it could lift weights! 🏋️‍♂️ Plus, we've added nifty ID and DateOfBirth controls, because who doesn't love a bit of order and precision? 📅<br>
+                The 'PersonsListComponent' got a makeover too. It's not just showing data; it's a full-on interactive experience with new event emitters. Editing a person is now a breeze, like opening a door to a new world. 🌍 And the person search functionality? You'll find people faster than finding Waldo! 🔍<br>
+                Our 'SharedService' is the new hero in town, managing state like a boss with its BehaviorSubject cape. 🦸‍♂️<br>
+                And let's not forget the general improvements - we've cleaned house, optimized imports, and streamlined our event handling. It's like giving your app a spa day; it's now refreshed, rejuvenated, and ready to impress. 💆‍♂️<br>
+                In short, we've not just enhanced our app; we've taken it to a whole new level of awesome. Get ready to manage persons in style! 🌟
+            </div>
+        </div>
 
         <div class="change-date">2024-01-16 - Part 2 [<a
                 href="https://github.com/AliSafari-IT/AngularProject/tree/form-handling" target="_blank">Git branch:
                 form-handling</a>]</div>
-        <h4>Enhance Persons List Component with Search and Deletion Confirmation</h4>
+        <h4 class="change-title">Enhance Persons List Component with Search and Deletion Confirmation</h4>
         <ul>
             <li><strong>Enhance:</strong> Persons List Component with Search and Deletion Confirmation.</li>
             <li><strong>Added:</strong> search functionality to the 'PersonsListComponent'.</li>
@@ -63,18 +69,20 @@
             <li><strong>Styled:</strong> the no-results message for better visibility and user experience.</li>
             <li><strong>Refactored:</strong> and optimized the person search logic for efficiency.</li>
         </ul>
-        <div>
-            <h5>Notes:</h5>
-            These changes significantly improve the user experience by allowing easier management and interaction with
-            person records, along with providing a more dynamic and responsive interface. <br>
-            The 'PersonsListComponent' has been enhanced with search functionality, deletion confirmation, and real-time
-            UI updates. <br>
-            The search functionality is integrated with two-way data binding with 'ngModel' for dynamic filtering. <br>
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                These changes significantly improve the user experience by allowing easier management and interaction with
+                person records, along with providing a more dynamic and responsive interface. <br>
+                The 'PersonsListComponent' has been enhanced with search functionality, deletion confirmation, and real-time
+                UI updates. <br>
+                The search functionality is integrated with two-way data binding with 'ngModel' for dynamic filtering.</div>
+            <br>
         </div>
 
         <div class="change-date">2024-01-16 - Part 1</div>
+        <h4 class="change-title">Implement Persons List Component with Delete Functionality</h4>
         <ul>
-            <li><strong>Implement:</strong> Persons List Component with Delete Functionality</li>
             <li><strong>Added:</strong> the <code>PersonsListComponent</code> to display a list of persons.</li>
             <li><strong>Implemented:</strong> the deletion of persons with real-time UI updates.</li>
             <li><strong>Integrated:</strong> <code>PersonService</code> for fetching and deleting person records.</li>
@@ -85,6 +93,15 @@
             <li><strong>Styled:</strong> the person list with CSS for a clean and modern layout.</li>
         </ul>
 
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                These changes improve the user experience by allowing easier management and interaction with person records,
+                along with providing a more dynamic and responsive interface. <br>
+                The 'PersonsListComponent' has been enhanced with delete functionality, and real-time UI updates.
+            </div>
+        </div>
+
         <div class="change-date">2024-01-15</div>
         <ul>
             <li><strong>Refactor:</strong> Add new employee form with validation 'form-handling' [asafarim]</li>
@@ -93,6 +110,15 @@
             <li><strong>Style:</strong> the form for a modern, responsive layout.</li>
             <li><strong>Update:</strong> service to handle new form data submission.</li>
         </ul>
+
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                This update is like giving your project a double shot of espresso. We're not just adding employees; we're revolutionizing the way you do it! 🚀<br>
+                First off, we've got a new, reactive form for adding person details. It's not just any form - it's like a smart assistant, helping you out with those pesky validations on the client side. Think of it as your friendly neighborhood form, keeping errors at bay. 🛡️<br>
+                And style? Oh, we've got style. The form now sports a modern, responsive layout. It's like we took it to a fashion show, and it came back with a runway-ready look. 💃
+            </div>
+        </div>
 
         <div class="change-date">2024-01-14</div>
         <ul>
@@ -105,6 +131,15 @@
             <li><strong>Deleted:</strong> CrewControl/.gitignore [asafarim]</li>
             <li><strong>Merge:</strong> branch 'frontend' into develop [asafarim]</li>
         </ul>
+
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                These changes improve the user experience by allowing easier management and interaction with person records,
+                along with providing a more dynamic and responsive interface. <br>
+                The 'PersonsListComponent' has been enhanced with delete functionality, and real-time UI updates.
+            </div>
+        </div>
 
         <div class="change-date">2024-01-13</div>
         <ul>
@@ -183,6 +218,16 @@
                 </ul>
             </li>
         </ul>
-
+        <div class="notes">
+            <h5 class="notes-title">Notes:</h5>
+            <div class="notes-content">
+                Attention, code wranglers! 🤠 We've just spiced up our project with some nifty updates that'll make your coding life a whole lot smoother. <br>
+                First off, in the tooling department, we've added a shiny new 'UpdateChangeLog.ps1'. Think of it as your personal diary keeper, meticulously noting down every little change. It's like having a meticulous librarian for your code! 📚<br>
+                Speaking of change logs, ours just got a fresh update. It's now so up-to-date, it practically writes the news! 🗞️ Stay in the loop with all our recent shenanigans – no detective work required.<br>
+                Now, let's talk backend – because we've gone full tech gourmet here. We've whipped up an ASP.NET Core Web API project structure that's as well-organized as a bento box. 🍱 And our Entity Framework Core? It's now cozying up with an MSSQL database, offering a connection smoother than a chocolate fountain. 🍫<br>
+                But wait, there's more! We've also implemented a basic GET endpoint. This little gem is like the Sherlock Holmes of database connectivity and retrieval operations, solving data mysteries with just a few clicks. 🔍<br>
+                In a nutshell, our latest updates are like a triple espresso shot for the project – energizing, powerful, and guaranteed to keep things running at full speed. Buckle up, because it's going to be a thrilling ride in the world of code! 🚀
+            </div>
+        </div>
     </div>
 </article>

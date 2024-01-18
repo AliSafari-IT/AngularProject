@@ -21,57 +21,63 @@
 .main-list {
     list-style-type: decimal;
     padding: 5px 20px;
+}
 
-    .main-item {
-        background-color: #f2f2f2;
-        /* Light gray background */
-        margin-bottom: 20px;
-        padding: 15px;
-        border-radius: 5px;
-        /* Rounded corners */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow */
-        font-family: Arial, sans-serif;
-        /* Use Arial font */
-        font-size: 13px;
-        /* Use larger font size */
-        line-height: 1.5;
-        /* Add some spacing between lines */
-        color: #333;
-        /* Default text color */
+.main-item {
+    display: flex;
+    background-color: #d3eed1;
+    margin-bottom: 20px;
+    padding: 5px    10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
 
-    }
+.main-item-title {
+    color: #0f3a02;
+    margin: 10px;
+}
 
-    .main-item-title {
-        color: #0f3a02;
-        /* Dark text color */
-        margin-top: 0;
-    }
+.subtitle {
+    color: #02063a;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-    .ul-group {
-        padding-left: 20px;
-        /* Indentation for the nested list */
-    }
+.project-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 
-    .ul-group li {
-        color: #4d1010;
-        /* Slightly lighter text color for list items */
-        margin-bottom: 10px;
-        /* Space between list items */
-    }
+}
 
-    .sub-group {
-        list-style-type: '►';
-        /* Style for nested list items */
-        padding-left: 10px;
-        /* Further indentation for nested lists */
-    }
+.fa {
+    margin-left: 10px;
+}
+.ul-group {
+    padding-left: 20px;
+    /* Indentation for the nested list */
+}
 
-    .sub-group li {
-        color: #555;
-        /* Slightly lighter text color for sub-items */
-    }
+.ul-group li {
+    color: #4d1010;
+    /* Slightly lighter text color for list items */
+    margin-bottom: 10px;
+    /* Space between list items */
+}
 
+.sub-group {
+    list-style-type: '►';
+    /* Style for nested list items */
+    padding-left: 10px;
+    /* Further indentation for nested lists */
+}
+
+.sub-group li {
+    color: #555;
+    /* Slightly lighter text color for sub-items */
 }
 
 .progress-bar-container {
@@ -131,37 +137,112 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
     margin-top: 50px;
     justify-content: space-around;
-  }
-  
-  input[type="text"] {
+}
+
+input[type="text"] {
     border: solid 1px var(--primary-color);
     padding: 10px;
     border-radius: 8px;
     margin-right: 4px;
     display: inline-block;
     width: 30%;
-  }
-  
-  button {
+}
+
+button {
     padding: 10px;
     border: solid 1px var(--primary-color);
     background: var(--primary-color);
     color: white;
     border-radius: 8px;
-  }
-  
-  @media (min-width: 500px) and (max-width: 768px) {
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
     .results {
         grid-template-columns: repeat(2, 1fr);
     }
+
     input[type="text"] {
         width: 70%;
-    }   
-  }
-  
-  @media (max-width: 499px) {
+    }
+}
+
+@media (max-width: 499px) {
     .results {
         grid-template-columns: 1fr;
-    }    
-  }
-  
+    }
+}
+
+.change-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #1410e0;
+}
+
+.change-date {
+    font-size: 0.8em;
+}
+
+.notes {
+    margin-bottom: 1em;
+    width: 75%;
+    margin: 50px 12.5%;
+    padding: 1em;
+    box-shadow: #460c0c 0px 0px 10px 5px;
+}
+
+.notes-title {
+    margin-bottom: 0.5em;
+    color: #f16a0f;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.notes-content {
+    color: #460c0c;
+    font-size: 1em;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+.tips {
+    background-color: #f0f8ff; /* Light blue background */
+    border: 1px solid #d3d3d3; /* Light grey border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: 'Arial', sans-serif; /* Stylish font */
+}
+
+.tips-title {
+    color: #333366; /* Dark blue color */
+    font-size: 24px; /* Large font size */
+    margin-bottom: 15px;
+    text-align: center; /* Center the title */
+}
+
+.tips-content p {
+    color: #2f4f4f; /* Dark slate gray text */
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify; /* Justify the text for a clean look */
+}
+
+.tips-group {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+}
+
+.tips-group li {
+    background-color: #ffffff; /* White background for list items */
+    margin-bottom: 10px; /* Space between items */
+    padding: 10px 15px;
+    border-radius: 5px; /* Slightly rounded corners for list items */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very subtle shadow for list items */
+    font-size: 14px;
+}
+
+.tips-group li strong {
+    color: #008b8b; /* Dark cyan color for strong text */
+}
