@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
 import { Employee } from '../../models/Employee';
 import { Person } from '../../models/Person';
 import { EmployeeService } from '../../Services/employee.service';
@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
   schemas: [],
 })
 export class EmployeePersonListComponent implements OnInit {
+  @Input() infoMessage: any;
   allEmployees: Employee[] = [];
   employees: Employee[] = [];
   selectedEmployeePersonId: number | null = null;
@@ -31,7 +32,7 @@ export class EmployeePersonListComponent implements OnInit {
   errorMessage: any;
   warningMessage: any;
   infoMessageHtml: any;
-  infoMessage: any;
+  //infoMessage: any;
   isAdding: boolean = false;
   isEditing: boolean = false;
   selectedEmployee: Employee | undefined;

@@ -1,0 +1,31 @@
+.change-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #1410e0;
+}
+
+.change-date {
+    font-size: 0.8em;
+}
+
+.notes{
+    margin-bottom: 1em;
+    width: 75%;
+    margin: 50px 12.5% ;
+    padding: 1em;
+    box-shadow: #460c0c 0px 0px 10px 5px;
+}
+.notes-title {
+    margin-bottom: 0.5em;
+    color: #f16a0f;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.notes-content {
+    color: #460c0c;
+    font-size: 1em;
+    font-weight: normal;
+    margin-bottom: 1em;
+}

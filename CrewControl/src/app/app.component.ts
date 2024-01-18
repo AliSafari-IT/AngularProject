@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     { title: 'About', route: '/about', active: false },
     { title: 'Contact', route: '/contact', active: false },
     { title: 'Contact Lazy', route: '/contactlazy', active: false },
+    { title: 'Person Form', route: '/person-form', active: false },
   ];
   
   constructor(private employeeService: EmployeeService, private router: Router) { }

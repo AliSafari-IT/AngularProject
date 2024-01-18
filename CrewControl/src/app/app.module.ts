@@ -5,9 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
